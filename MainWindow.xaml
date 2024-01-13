@@ -1,14 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Window
     x:Class="SaveMe.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SaveMe"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:SaveMe.UI"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ui:AppTitleBar x:Name="AppTitleBar" Grid.Row="0"/>
+<!--
+        <NavigationView Background="{ThemeResource AppBackgroundDefault}"
+                        Grid.Row="1"
+                        x:Name="NavigationControl"
+                        PaneDisplayMode="Left"
+                        SelectionChanged="NavigationControl_SelectionChanged"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem IsSelected="True" Content="Home" Tag="home" Icon="Home"/>
+                <NavigationViewItem Content="List" Tag="list" Icon="Library"/>
+                <NavigationViewItem Content="Create" Tag="create" Icon="Save" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame" Margin="24">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+-->        
+    </Grid>
 </Window>

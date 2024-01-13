@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="SaveMe.UI.AppTitleBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prop="using:SaveMe.Properties"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource AppBackgroundDefault}">
+        <Image Source="../Assets/Icons/bonfire.ico"
+               HorizontalAlignment="Left" 
+               Width="16" Height="16" 
+               Margin="8,0"/>
+        <TextBlock Text="{x:Bind prop:Resources.AppTitle}"
+                   TextWrapping="NoWrap"
+                   Style="{StaticResource CaptionTextBlockStyle}" 
+                   VerticalAlignment="Center"
+                   Margin="28,0,0,0"/>
+    </Grid>
+</UserControl>

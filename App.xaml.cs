@@ -1,9 +1,4 @@
-﻿using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using System;
-using Windows.Graphics;
-using Windows.UI.ViewManagement;
+﻿using Microsoft.UI.Xaml;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,

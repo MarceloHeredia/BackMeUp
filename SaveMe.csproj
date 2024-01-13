@@ -21,6 +21,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Icons\bonfire.ico" />
+    <None Remove="Theme\ThemeResources.xaml" />
+    <None Remove="UI\AppTitleBar.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,7 +53,6 @@
   <ItemGroup>
     <Folder Include="DB\" />
     <Folder Include="DirectoryManagement\" />
-    <Folder Include="UI\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,16 @@
     <Content Update="Assets\Icons\bonfire.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Theme\ThemeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UI\AppTitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 
