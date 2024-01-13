@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:res="using:SaveMe.Utils.ExtensionMethods"
     xmlns:prop="using:SaveMe.Properties"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource AppBackgroundDefault}">
-        <Image Source="../Assets/Icons/bonfire.ico"
+        <Image Source="{x:Bind prop:Resources.AppIcon}"
                HorizontalAlignment="Left" 
                Width="16" Height="16" 
                Margin="8,0"/>

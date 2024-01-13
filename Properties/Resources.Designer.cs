@@ -61,7 +61,7 @@ namespace SaveMe.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Assets\Icons\bonfire.ico.
+        ///   Looks up a localized string similar to /Assets/Icons/bonfire.ico.
         /// </summary>
         internal static string AppIcon {
             get {

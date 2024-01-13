@@ -1,7 +1,6 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using SaveMe.Properties;
-using SaveMe.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,8 +27,8 @@ namespace SaveMe
             if (!AppWindowTitleBar.IsCustomizationSupported()) return;
 
             Title = Resources.AppTitle;
-    
-            AppWindow.SetIcon(Resources.AppIcon);
+
+            AppWindow.SetIcon("/Assets/Icons/bonfire.ico");
         }
     }
 }
