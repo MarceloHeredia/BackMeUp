@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Markup;
 using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace SaveMe.Utils.ExtensionMethods
+namespace BackMeUp.Utils.ExtensionMethods
 {
     [MarkupExtensionReturnType(ReturnType = typeof(string))]
     internal class StringResourceExtension : MarkupExtension

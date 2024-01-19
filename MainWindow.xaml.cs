@@ -1,10 +1,10 @@
+using BackMeUp.Models;
+using BackMeUp.Properties;
+using BackMeUp.UI.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
-using SaveMe.Models;
-using SaveMe.Properties;
-using SaveMe.UI.Pages;
 
-namespace SaveMe
+namespace BackMeUp
 {
     public sealed partial class MainWindow
     {

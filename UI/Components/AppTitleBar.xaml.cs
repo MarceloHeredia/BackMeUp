@@ -1,4 +1,4 @@
-namespace SaveMe.UI.Components
+namespace BackMeUp.UI.Components
 {
     public sealed partial class AppTitleBar
     {

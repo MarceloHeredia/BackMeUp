@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace SaveMe.UI.Pages
+namespace BackMeUp.UI.Pages
 {
     public sealed partial class CreateBackupPage
     {

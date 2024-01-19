@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using WinUIEx;
 
-namespace SaveMe
+namespace BackMeUp
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

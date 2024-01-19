@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace SaveMe.UI.Pages
+namespace BackMeUp.UI.Pages
 {
     public sealed partial class HomePage
     {

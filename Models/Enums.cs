@@ -1,5 +1,5 @@
 ﻿
-namespace SaveMe.Models
+namespace BackMeUp.Models
 {
     internal enum NavigationItemOptions
     {
