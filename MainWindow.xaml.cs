@@ -1,16 +1,12 @@
 using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using SaveMe.Models;
 using SaveMe.Properties;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using SaveMe.UI.Pages;
 
 namespace SaveMe
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow
     {
         public MainWindow()
         {
@@ -29,6 +25,30 @@ namespace SaveMe
             Title = Resources.AppTitle;
 
             AppWindow.SetIcon("/Assets/Icons/bonfire.ico");
+        }
+
+        private void NavigationControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                return;
+                //ContentFrame.Navigate(typeof(SettingsPage));
+            }
+            var item = args.SelectedItem as NavigationViewItem;
+            var tag = (NavigationItemOptions)item!.Tag;
+
+            switch (tag)
+            {
+                case NavigationItemOptions.Home:
+                    ContentFrame.Navigate(typeof(HomePage));
+                    break;
+                case NavigationItemOptions.List:
+                    //ContentFrame.Navigate(typeof(SavesListViewPage));
+                    break;
+                case NavigationItemOptions.Create:
+                    ContentFrame.Navigate(typeof(CreateBackupPage));
+                    break;
+            }
         }
     }
 }

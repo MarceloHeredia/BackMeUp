@@ -1,10 +1,12 @@
 <Window
     x:Class="SaveMe.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="using:SaveMe.UI"
+    xmlns:models="using:SaveMe.Models"
+    xmlns:components="using:SaveMe.UI.Components"
+    xmlns:localeRes="using:SaveMe.Utils.ExtensionMethods"
     mc:Ignorable="d">
 
     <Grid>
@@ -12,19 +14,16 @@
             <RowDefinition Height="32" />
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ui:AppTitleBar x:Name="AppTitleBar" Grid.Row="0"/>
-<!--
+        <components:AppTitleBar x:Name="AppTitleBar" Grid.Row="0"/>
         <NavigationView Background="{ThemeResource AppBackgroundDefault}"
                         Grid.Row="1"
-                        x:Name="NavigationControl"
                         PaneDisplayMode="Left"
                         SelectionChanged="NavigationControl_SelectionChanged"
-                        IsBackButtonVisible="Collapsed"
-                        IsSettingsVisible="False">
+                        IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
-                <NavigationViewItem IsSelected="True" Content="Home" Tag="home" Icon="Home"/>
-                <NavigationViewItem Content="List" Tag="list" Icon="Library"/>
-                <NavigationViewItem Content="Create" Tag="create" Icon="Save" />
+                <NavigationViewItem IsSelected="True" Content="{localeRes:StringResource Key=MainWindowHome}" Tag="{x:Bind models:NavigationItemOptions.Home}" Icon="Home"/>
+                <NavigationViewItem Content="{localeRes:StringResource Key=MainWindowList}" Tag="{x:Bind models:NavigationItemOptions.List}" Icon="Library"/>
+                <NavigationViewItem Content="{localeRes:StringResource Key=MainWindowCreate}" Tag="{x:Bind models:NavigationItemOptions.Create}" Icon="Save" />
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame" Margin="24">
                 <Frame.ContentTransitions>
@@ -34,6 +33,5 @@
                 </Frame.ContentTransitions>
             </Frame>
         </NavigationView>
--->        
     </Grid>
 </Window>

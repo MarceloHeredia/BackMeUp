@@ -1,12 +1,10 @@
-using Microsoft.UI.Xaml.Controls;
-
-namespace SaveMe.UI
+namespace SaveMe.UI.Components
 {
     public sealed partial class AppTitleBar
     {
         public AppTitleBar()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

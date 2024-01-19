@@ -7,4 +7,5 @@
     <SolidColorBrush x:Key="AppCardDefault" Color="#2b2b2b"/>
     <SolidColorBrush x:Key="WindowCaptionBackground">#202020</SolidColorBrush>
     <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled">#202020</SolidColorBrush>
+    <SolidColorBrush x:Key="TextColorDefault">Gainsboro</SolidColorBrush>
 </ResourceDictionary>
