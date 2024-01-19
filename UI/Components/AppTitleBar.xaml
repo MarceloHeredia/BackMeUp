@@ -10,12 +10,12 @@
     <Grid Background="{ThemeResource AppBackgroundDefault}">
         <Image Source="{x:Bind prop:Resources.AppIcon}"
                HorizontalAlignment="Left" 
-               Width="16" Height="16" 
-               Margin="8,0"/>
+               Width="36" Height="40" 
+               Margin="8,4, 0, 0"/>
         <TextBlock Text="{x:Bind prop:Resources.AppTitle}"
                    TextWrapping="NoWrap"
                    Style="{StaticResource CaptionTextBlockStyle}" 
                    VerticalAlignment="Center"
-                   Margin="28,0,0,0"/>
+                   Margin="50,4,0,0"/>
     </Grid>
 </UserControl>

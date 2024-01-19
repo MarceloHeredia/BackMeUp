@@ -17,7 +17,7 @@
   <Properties>
     <DisplayName>SaveMe</DisplayName>
     <PublisherDisplayName>hered</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\Logos\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -34,13 +34,14 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Save Me!"
-        Description="An easy to use backup manager for game saves."
+        DisplayName="BackMeUp!"
+        Description="Backup your game saves and easily rollback unwanted events :)"
         BackgroundColor="transparent"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        Square150x150Logo="Assets\Logos\Square150x150Logo.png"
+        Square44x44Logo="Assets\Logos\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Logos\Wide310x150Logo.png"  Square71x71Logo="Assets\Logos\SmallTile.png" Square310x310Logo="Assets\Logos\LargeTile.png"/>
+        <uap:SplashScreen Image="Assets\Logos\SplashScreen.png" />
+        <uap:LockScreen BadgeLogo="Assets\Logos\BadgeLogo.png" Notification="badge"/>
       </uap:VisualElements>
     </Application>
   </Applications>

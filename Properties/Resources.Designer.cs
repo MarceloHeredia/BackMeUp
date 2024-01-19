@@ -61,7 +61,7 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Assets/Icons/bonfire.ico.
+        ///   Looks up a localized string similar to /Assets/Icons/BackMeUpLogo.ico.
         /// </summary>
         internal static string AppIcon {
             get {
@@ -70,7 +70,7 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save Me!.
+        ///   Looks up a localized string similar to BackMeUp!.
         /// </summary>
         internal static string AppTitle {
             get {

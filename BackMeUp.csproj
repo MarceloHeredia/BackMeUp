@@ -12,6 +12,7 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <ApplicationIcon>Assets\Icons\BackMeUpLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Images\bonf.png" />
@@ -19,6 +20,16 @@
     <Content Remove="Assets\Images\lamp.gif" />
     <Content Remove="Assets\Images\mimic.png" />
     <Content Remove="Assets\Images\solaire.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-100.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-125.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-150.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-200.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-400.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-100.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-125.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-150.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-200.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-400.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Icons\bonfire.ico" />
@@ -26,16 +37,6 @@
     <None Remove="UI\AppTitleBar.xaml" />
     <None Remove="UI\Pages\CreateBackupPage.xaml" />
     <None Remove="UI\Pages\HomePage.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,7 +55,6 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Logos\" />
     <Folder Include="DB\" />
     <Folder Include="DirectoryManagement\" />
     <Folder Include="UI\Components\" />
@@ -67,6 +67,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Assets\Icons\BackMeUpLogo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\Icons\bonfire.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

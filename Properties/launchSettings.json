@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "SaveMe (Package)": {
+    "BackMeUp (Package)": {
       "commandName": "MsixPackage"
     },
-    "SaveMe (Unpackaged)": {
+    "BackMeUp (Unpackaged)": {
       "commandName": "Project"
     }
   }

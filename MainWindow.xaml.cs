@@ -3,6 +3,7 @@ using BackMeUp.Properties;
 using BackMeUp.UI.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
+using WinUIEx;
 
 namespace BackMeUp
 {
@@ -24,7 +25,7 @@ namespace BackMeUp
 
             Title = Resources.AppTitle;
 
-            AppWindow.SetIcon("/Assets/Icons/bonfire.ico");
+            this.SetIcon(Resources.AppIcon);
         }
 
         private void NavigationControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
