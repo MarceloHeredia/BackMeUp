@@ -18,17 +18,18 @@
                        FontSize="30" Text="{localeRes:StringResource Key=CreateBackupPageTitle}"/>
 
             <Grid Grid.Row="1">
-                <Image Stretch="Fill" HorizontalAlignment="Center" Source="{x:Bind prop:Resources.CreateBackupImage}"></Image>
-                <Grid Width="250" Height="250">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <ComboBox x:Uid="GameName" x:Name="SelectedGameName" Header="{localeRes:StringResource Key=CreateBackupPageGameName}"
-                                  ItemsSource="{x:Bind GameList}" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
-                        <TextBox x:Uid="SaveName" x:Name="TextSaveName" Header="{localeRes:StringResource Key=CreateBackupPageSaveName}"
-                                 Margin="0, 25" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
-                        <Button x:Name="CreateBackupButton" Content="{localeRes:StringResource Key=CreateBackupPageCreateButton}"
-                                Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
-                    </StackPanel>
-                </Grid>
+                <Image Stretch="Fill" FlowDirection="RightToLeft" HorizontalAlignment="Center" Source="{x:Bind prop:Resources.CreateBackupImage}"></Image>
+                <StackPanel Margin="60,0" HorizontalAlignment="left" VerticalAlignment="Center"
+                            Width="250">
+                    <ComboBox x:Uid="GameName" x:Name="SelectedGameName" Header="{localeRes:StringResource Key=CreateBackupPageGameName}"
+                              ItemsSource="{x:Bind GameList}" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                    <TextBox x:Uid="SaveName" x:Name="TextSaveName" Header="{localeRes:StringResource Key=CreateBackupPageSaveName}"
+                             Margin="0, 25" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                    <TextBox x:Name="TextDescription" Header="{localeRes:StringResource Key=CreateBackupPageDescription}"
+                             Opacity="0.7" Margin="0,0,0,25" Background="{ThemeResource AppBackgroundDefault}"/>
+                    <Button Content="{localeRes:StringResource Key=CreateBackupPageCreateButton}"
+                            Click="CreateBackup_Click" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </StackPanel>

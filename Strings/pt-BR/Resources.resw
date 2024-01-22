@@ -120,6 +120,9 @@
   <data name="CreateBackupPageCreateButton" xml:space="preserve">
     <value>Criar</value>
   </data>
+  <data name="CreateBackupPageDescription" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
   <data name="CreateBackupPageGameName" xml:space="preserve">
     <value>Jogo</value>
   </data>
