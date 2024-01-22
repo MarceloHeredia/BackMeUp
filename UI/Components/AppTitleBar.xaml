@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource AppBackgroundDefault}">
-        <Image Source="{x:Bind prop:Resources.AppIcon}"
+        <Image Source="{x:Bind prop:Resources.AppTitleBarIcon}"
                HorizontalAlignment="Left" 
                Width="36" Height="40" 
                Margin="8,4, 0, 0"/>

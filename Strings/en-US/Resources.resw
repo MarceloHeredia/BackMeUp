@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreateBackupPageCreateButton" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateBackupPageGameName" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="CreateBackupPageSaveName" xml:space="preserve">
+    <value>Save name</value>
+  </data>
+  <data name="CreateBackupPageTitle" xml:space="preserve">
+    <value>Create backup</value>
+  </data>
   <data name="HomePageParagraph" xml:space="preserve">
     <value>Cat ipsum dolor sit amet, cattt catt cattty cat being a cat or poop in a handbag look delicious and drink the soapy mopping up water then puke giant foamy fur-balls attack the child. Stretch walk on a keyboard or love fish. Meow all night pounce on unsuspecting person or purr when being pet but kitten is playing with dead mouse. Twitch tail in permanent irritation find a way to fit in tiny box yet don't nosh on the birds run up and down stairs sit on human they not getting up ever really likes hummus walk on car leaving trail of paw prints on hood and windshield.</value>
   </data>
   <data name="HomePageTitle" xml:space="preserve">
-    <value>Welcome to SaveMe!</value>
+    <value>Create, manage and restore your game saves</value>
   </data>
   <data name="MainWindowCreate" xml:space="preserve">
     <value>Create backup</value>

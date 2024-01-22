@@ -61,7 +61,7 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Assets/Icons/BackMeUpLogo.ico.
+        ///   Looks up a localized string similar to Assets\Icons\BackMeUpLogo.ico.
         /// </summary>
         internal static string AppIcon {
             get {
@@ -75,6 +75,24 @@ namespace BackMeUp.Properties {
         internal static string AppTitle {
             get {
                 return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Assets/Icons/BackMeUpLogo.ico.
+        /// </summary>
+        internal static string AppTitleBarIcon {
+            get {
+                return ResourceManager.GetString("AppTitleBarIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Assets/Images/lamp.gif.
+        /// </summary>
+        internal static string CreateBackupImage {
+            get {
+                return ResourceManager.GetString("CreateBackupImage", resourceCulture);
             }
         }
     }

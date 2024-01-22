@@ -118,9 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppIcon" xml:space="preserve">
-    <value>/Assets/Icons/BackMeUpLogo.ico</value>
+    <value>Assets\Icons\BackMeUpLogo.ico</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
     <value>BackMeUp!</value>
+  </data>
+  <data name="AppTitleBarIcon" xml:space="preserve">
+    <value>/Assets/Icons/BackMeUpLogo.ico</value>
+  </data>
+  <data name="CreateBackupImage" xml:space="preserve">
+    <value>/Assets/Images/lamp.gif</value>
   </data>
 </root>

@@ -12,7 +12,9 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <ApplicationIcon>Assets\Icons\BackMeUpLogo.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\Icons\bonfire.ico</ApplicationIcon>
+    <PackageIcon>BackMeUpLogo2.0.png</PackageIcon>
+    <RepositoryUrl>https://github.com/MarceloHeredia/BackMeUp</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Images\bonf.png" />
@@ -20,11 +22,6 @@
     <Content Remove="Assets\Images\lamp.gif" />
     <Content Remove="Assets\Images\mimic.png" />
     <Content Remove="Assets\Images\solaire.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-100.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-125.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-150.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-200.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-400.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-100.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-125.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-150.png" />
@@ -40,8 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231219000" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.231202003-experimental1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25936-preview" />
     <PackageReference Include="WinUIEx" Version="2.3.3" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
@@ -71,7 +68,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Icons\bonfire.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +78,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Update="Assets\Icons\BackMeUpLogo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Assets\Images\dancin.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Images\lamp.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

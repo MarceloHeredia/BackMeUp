@@ -3,7 +3,6 @@ using BackMeUp.Properties;
 using BackMeUp.UI.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
-using WinUIEx;
 
 namespace BackMeUp
 {
@@ -24,8 +23,7 @@ namespace BackMeUp
             if (!AppWindowTitleBar.IsCustomizationSupported()) return;
 
             Title = Resources.AppTitle;
-
-            this.SetIcon(Resources.AppIcon);
+            AppWindow.SetIcon(Resources.AppIcon);
         }
 
         private void NavigationControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

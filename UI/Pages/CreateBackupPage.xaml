@@ -1,15 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="BackMeUp.UI.Pages.CreateBackupPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:BackMeUp.UI.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:prop="using:BackMeUp.Properties"
+    xmlns:localeRes="using:BackMeUp.Utils.ExtensionMethods"
+    mc:Ignorable="d">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-    <Grid>
+            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource TextColorDefault}"
+                       FontSize="30" Text="{localeRes:StringResource Key=CreateBackupPageTitle}"/>
 
-    </Grid>
+            <Grid Grid.Row="1">
+                <Image Stretch="Fill" HorizontalAlignment="Center" Source="{x:Bind prop:Resources.CreateBackupImage}"></Image>
+                <Grid Width="250" Height="250">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ComboBox x:Uid="GameName" x:Name="SelectedGameName" Header="{localeRes:StringResource Key=CreateBackupPageGameName}"
+                                  ItemsSource="{x:Bind GameList}" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                        <TextBox x:Uid="SaveName" x:Name="TextSaveName" Header="{localeRes:StringResource Key=CreateBackupPageSaveName}"
+                                 Margin="0, 25" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                        <Button x:Name="CreateBackupButton" Content="{localeRes:StringResource Key=CreateBackupPageCreateButton}"
+                                Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </StackPanel>
 </Page>

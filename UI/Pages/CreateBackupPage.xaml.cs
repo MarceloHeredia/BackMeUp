@@ -17,6 +17,8 @@ namespace BackMeUp.UI.Pages
 {
     public sealed partial class CreateBackupPage
     {
+
+        private List<string> GameList => ["a", "b"];
         public CreateBackupPage()
         {
             this.InitializeComponent();
