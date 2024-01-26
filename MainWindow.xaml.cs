@@ -42,7 +42,7 @@ namespace BackMeUp
                     ContentFrame.Navigate(typeof(HomePage));
                     break;
                 case NavigationItemOptions.List:
-                    //ContentFrame.Navigate(typeof(SavesListViewPage));
+                    ContentFrame.Navigate(typeof(BackupsPage));
                     break;
                 case NavigationItemOptions.Create:
                     ContentFrame.Navigate(typeof(CreateBackupPage));

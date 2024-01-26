@@ -1,0 +1,92 @@
+<Page
+    x:Class="BackMeUp.UI.Pages.BackupsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:BackMeUp.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="GameListViewTemplate" x:DataType="models:SaveBackupViewItem">
+            <UserControl PointerEntered="SavesListSwipe_PointerEntered" PointerExited="SavesListSwipe_PointerExited">
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="HoveringStates">
+                            <VisualState x:Name="HoverButtonsHidden" />
+                            <VisualState x:Name="HoverButtonsShown">
+                                <VisualState.Setters>
+                                    <Setter Target="DeleteButton.Visibility" Value="Visible" />
+                                    <Setter Target="RestoreButton.Visibility" Value="Visible" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <SwipeControl>
+                        <StackPanel Orientation="Horizontal" Height="64">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="190"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind SaveBackup.SaveName}"/>
+                                    <TextBlock Text="{x:Bind SaveBackup.GameName}"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="{x:Bind SaveBackup.Creation}" Margin="0,30,0,0"/>
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <AppBarButton Name="RestoreButton" Visibility="Collapsed" Command="{x:Bind Restore}" CommandParameter="{x:Bind SaveBackup}"/>
+                                    <AppBarButton Name="DeleteButton" Visibility="Collapsed" Command="{x:Bind Delete}" CommandParameter="{x:Bind SaveBackup}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </SwipeControl>
+                </Grid>
+            </UserControl>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" 
+              Margin="0,100,50,100" 
+              Width="200" 
+              Height="200"
+              CornerRadius="{StaticResource ControlCornerRadius}"
+              Background="{ThemeResource AppCardDefault}">
+            <!-- The textboxes used for filtering are shown below: -->
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+                <TextBox x:Name="SaveNameFilter" Width="150" Header="Save name" Margin="8"
+                         HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+                <TextBox x:Name="GameNameFilter" Width="150" Header="Game name" Margin="8"
+                         HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1"
+              Margin="0,0,20,0"
+              CornerRadius="{StaticResource ControlCornerRadius}"
+              Height="700"
+              Width="550">
+            <ListView
+                ItemsSource="{x:Bind _filteredSaves}"
+                ItemTemplate="{StaticResource GameListViewTemplate}"
+                SelectionMode="Single"
+                ShowsScrollingPlaceholders="True"
+                Height="600"
+                Width="500"
+                BorderThickness="1"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+            />
+        </Grid>
+
+    </Grid>
+</Page>
