@@ -22,6 +22,11 @@
     <Content Remove="Assets\Images\lamp.gif" />
     <Content Remove="Assets\Images\mimic.png" />
     <Content Remove="Assets\Images\solaire.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-100.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-125.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-150.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-200.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-400.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-100.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-125.png" />
     <Content Remove="Assets\Logos\StoreLogo.scale-150.png" />

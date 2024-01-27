@@ -1,4 +1,5 @@
 using BackMeUp.Models;
+using BackMeUp.Utils;
 using BackMeUp.Utils.Behaviors;
 using BackMeUp.Utils.ExtensionMethods;
 using Microsoft.UI.Xaml;
@@ -16,7 +17,7 @@ namespace BackMeUp.UI.Pages
     {
         private readonly List<SaveBackup> _saves = []; //TODO get list of saves from database
         private readonly ObservableCollection<SaveBackupViewItem> _allSaves = [];
-        private ObservableCollection<SaveBackupViewItem> _filteredSaves;
+        private readonly ObservableCollection<SaveBackupViewItem> _filteredSaves;
         private readonly StandardUICommand _deleteCommand, _restoreCommand;
 
         public BackupsPage()
@@ -25,11 +26,12 @@ namespace BackMeUp.UI.Pages
 
             _deleteCommand = new StandardUICommand(StandardUICommandKind.Delete);
             _deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
+            _deleteCommand.Description = ResourceManagementHelper.GetResource("BackupsPageDeleteTooltip");
 
             _restoreCommand = new StandardUICommand(StandardUICommandKind.Copy);
             _restoreCommand.ExecuteRequested += RestoreCommand_ExecuteRequested;
-            _restoreCommand.Label = "Restore";
-            _restoreCommand.Description = "Restores this backup";
+            _restoreCommand.Label = ResourceManagementHelper.GetResource("BackupsPageRestore");
+            _restoreCommand.Description = ResourceManagementHelper.GetResource("BackupsPageRestoreTooltip");
 
 
             SomeTest().ForEach(saveBackup =>

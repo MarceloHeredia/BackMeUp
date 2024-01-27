@@ -6,8 +6,8 @@ namespace BackMeUp.Utils.ExtensionMethods
     [MarkupExtensionReturnType(ReturnType = typeof(string))]
     internal class StringResourceExtension : MarkupExtension
     {
-        private static readonly ResourceManager _resourceManager = new();
-        private static readonly ResourceContext _resourceContext = _resourceManager.CreateResourceContext();
+        private static readonly ResourceManager ResourceManager = new();
+        private static readonly ResourceContext ResourceContext = ResourceManager.CreateResourceContext();
 
         public StringResourceExtension() { }
 
@@ -16,8 +16,9 @@ namespace BackMeUp.Utils.ExtensionMethods
 
         protected override object ProvideValue()
         {
-            var resourceMap = _resourceManager.MainResourceMap.GetSubtree(SubTree);
-            return resourceMap.GetValue(Key, _resourceContext).ValueAsString;
+            var resourceMap = ResourceManager.MainResourceMap.GetSubtree(SubTree);
+            return resourceMap.GetValue(Key, ResourceContext).ValueAsString;
         }
     }
+
 }

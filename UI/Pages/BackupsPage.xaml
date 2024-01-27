@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:BackMeUp.Models"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:localeRes="using:BackMeUp.Utils.ExtensionMethods"
+    mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="GameListViewTemplate" x:DataType="models:SaveBackupViewItem">
             <UserControl PointerEntered="SavesListSwipe_PointerEntered" PointerExited="SavesListSwipe_PointerExited">
@@ -57,32 +57,30 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" 
-              Margin="0,100,50,100" 
+              Margin="0,100,100,100" 
               Width="200" 
               Height="200"
               CornerRadius="{StaticResource ControlCornerRadius}"
               Background="{ThemeResource AppCardDefault}">
             <!-- The textboxes used for filtering are shown below: -->
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
-                <TextBox x:Name="SaveNameFilter" Width="150" Header="Save name" Margin="8"
+                <TextBlock TextAlignment="Center" Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}" Text="{localeRes:StringResource Key=BackupsPageFilter}"/>
+                <TextBox x:Name="SaveNameFilter" Width="150" Header="{localeRes:StringResource Key=BackupsPageFilterSaveName}" Margin="8"
                          HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
-                <TextBox x:Name="GameNameFilter" Width="150" Header="Game name" Margin="8"
+                <TextBox x:Name="GameNameFilter" Width="150" Header="{localeRes:StringResource Key=BackupsPageFilterGameName}" Margin="8"
                          HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="1"
+        <Grid Grid.Row="0" Grid.Column="1"
               Margin="0,0,20,0"
-              CornerRadius="{StaticResource ControlCornerRadius}"
-              Height="700"
-              Width="550">
+              MaxHeight="600"
+              MaxWidth="500">
             <ListView
+                CornerRadius="{StaticResource ControlCornerRadius}"
                 ItemsSource="{x:Bind _filteredSaves}"
                 ItemTemplate="{StaticResource GameListViewTemplate}"
                 SelectionMode="Single"
                 ShowsScrollingPlaceholders="True"
-                Height="600"
-                Width="500"
                 BorderThickness="1"
                 BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
             />
