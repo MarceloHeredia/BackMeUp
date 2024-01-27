@@ -129,4 +129,19 @@
   <data name="CreateBackupImage" xml:space="preserve">
     <value>/Assets/Images/lamp.gif</value>
   </data>
+  <data name="DS2Name" xml:space="preserve">
+    <value>Dark Souls II</value>
+  </data>
+  <data name="DS3Name" xml:space="preserve">
+    <value>Dark Souls III</value>
+  </data>
+  <data name="DSRName" xml:space="preserve">
+    <value>Dark Souls Remastered</value>
+  </data>
+  <data name="EldenRingName" xml:space="preserve">
+    <value>Dont Know Yet</value>
+  </data>
+  <data name="SekiroName" xml:space="preserve">
+    <value>Sekiro</value>
+  </data>
 </root>

@@ -95,5 +95,50 @@ namespace BackMeUp.Properties {
                 return ResourceManager.GetString("CreateBackupImage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Souls II.
+        /// </summary>
+        internal static string DS2Name {
+            get {
+                return ResourceManager.GetString("DS2Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Souls III.
+        /// </summary>
+        internal static string DS3Name {
+            get {
+                return ResourceManager.GetString("DS3Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Souls Remastered.
+        /// </summary>
+        internal static string DSRName {
+            get {
+                return ResourceManager.GetString("DSRName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dont Know Yet.
+        /// </summary>
+        internal static string EldenRingName {
+            get {
+                return ResourceManager.GetString("EldenRingName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sekiro.
+        /// </summary>
+        internal static string SekiroName {
+            get {
+                return ResourceManager.GetString("SekiroName", resourceCulture);
+            }
+        }
     }
 }
