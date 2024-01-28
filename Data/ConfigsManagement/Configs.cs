@@ -1,9 +1,9 @@
 ﻿using BackMeUp.Data.Models;
 using BackMeUp.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace BackMeUp.Data.ConfigsManagement
 {
@@ -72,9 +72,22 @@ namespace BackMeUp.Data.ConfigsManagement
             {
                 File.Delete(DefaultConfigs.ConfigsFile);
             }
-            // Create the Config file using Newtonsoft JSON
-            var jsonConfigs = JsonConvert.SerializeObject(DefaultConfigs.DefaultConfigsData, Formatting.Indented);
-            File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
+
+            WriteConfigs(DefaultConfigs.DefaultConfigsData);
+        }
+
+        internal static bool WriteConfigs(Configs configs)
+        {
+            try
+            {
+                var jsonConfigs = JsonConvert.SerializeObject(configs, Formatting.Indented);
+                File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
+                return true;
+            }
+            catch (Exception) // TODO: Log error
+            {
+                return false;
+            }
         }
     }
 }
