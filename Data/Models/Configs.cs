@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace BackMeUp.Data.Models
@@ -6,6 +7,7 @@ namespace BackMeUp.Data.Models
     internal class Configs
     {
         public IList<GameSaveConfig> GameSaveConfigs { get; set; }
+        [JsonProperty(nameof(Version))]
         public static Version Version => new(1, 0, 0, 0);
         public DateTime LastUpdated { get; set; }
     }

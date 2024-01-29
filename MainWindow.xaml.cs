@@ -30,8 +30,8 @@ namespace BackMeUp
         {
             if (args.IsSettingsSelected)
             {
+                ContentFrame.Navigate(typeof(SettingsPage));
                 return;
-                //ContentFrame.Navigate(typeof(SettingsPage));
             }
             var item = args.SelectedItem as NavigationViewItem;
             var tag = (NavigationItemOptions)item!.Tag;
