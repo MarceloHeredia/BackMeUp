@@ -1,5 +1,5 @@
 ﻿
-namespace BackMeUp.Models
+namespace BackMeUp.Data.Models
 {
     internal enum NavigationItemOptions
     {

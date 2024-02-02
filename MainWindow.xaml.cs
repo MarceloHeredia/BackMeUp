@@ -1,4 +1,4 @@
-using BackMeUp.Models;
+using BackMeUp.Data.Models;
 using BackMeUp.Properties;
 using BackMeUp.UI.Pages;
 using Microsoft.UI.Windowing;

@@ -1,4 +1,3 @@
-using BackMeUp.Models;
 using BackMeUp.Utils;
 using BackMeUp.Utils.Behaviors;
 using BackMeUp.Utils.ExtensionMethods;
@@ -9,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BackMeUp.Data.Models;
 
 
 namespace BackMeUp.UI.Pages

@@ -168,4 +168,22 @@
   <data name="MainWindowList" xml:space="preserve">
     <value>List</value>
   </data>
+  <data name="SettingsPageDeleteTooltip" xml:space="preserve">
+    <value>Deletes the selected config</value>
+  </data>
+  <data name="SettingsPageEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="SettingsPageEditTooltip" xml:space="preserve">
+    <value>Edits the selected config</value>
+  </data>
+  <data name="SettingsPageReset" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
+  <data name="SettingsPageResetConfirm" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SettingsPageResetFlyout" xml:space="preserve">
+    <value>This will reset all save locations to default. Do you want to continue?</value>
+  </data>
 </root>

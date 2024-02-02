@@ -168,4 +168,22 @@
   <data name="MainWindowList" xml:space="preserve">
     <value>Listar</value>
   </data>
+  <data name="SettingsPageDeleteTooltip" xml:space="preserve">
+    <value>Exclui a configuração selecionada</value>
+  </data>
+  <data name="SettingsPageEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="SettingsPageEditTooltip" xml:space="preserve">
+    <value>Edita a configuração selecionada</value>
+  </data>
+  <data name="SettingsPageReset" xml:space="preserve">
+    <value>Restaurar padrão</value>
+  </data>
+  <data name="SettingsPageResetConfirm" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="SettingsPageResetFlyout" xml:space="preserve">
+    <value>Isso irá restaurar todas configurações para o padrão. Deseja continuar?</value>
+  </data>
 </root>

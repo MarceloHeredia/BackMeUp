@@ -4,8 +4,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:BackMeUp.Models"
     xmlns:localeRes="using:BackMeUp.Utils.ExtensionMethods"
+    xmlns:models="using:BackMeUp.Data.Models"
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="GameListViewTemplate" x:DataType="models:SaveBackupViewItem">
@@ -23,24 +23,22 @@
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
                     <SwipeControl>
-                        <StackPanel Orientation="Horizontal" Height="64">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="190"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                                    <TextBlock Text="{x:Bind SaveBackup.SaveName}"/>
-                                    <TextBlock Text="{x:Bind SaveBackup.GameName}"/>
-                                </StackPanel>
-                                <TextBlock Grid.Column="1" Text="{x:Bind SaveBackup.Creation}" Margin="0,30,0,0"/>
-                                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <AppBarButton Name="RestoreButton" Visibility="Collapsed" Command="{x:Bind Restore}" CommandParameter="{x:Bind SaveBackup}"/>
-                                    <AppBarButton Name="DeleteButton" Visibility="Collapsed" Command="{x:Bind Delete}" CommandParameter="{x:Bind SaveBackup}"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
+                        <Grid Height="64">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+                                <TextBlock Text="{x:Bind SaveBackup.SaveName}"/>
+                                <TextBlock Text="{x:Bind SaveBackup.GameName}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Column="1" Text="{x:Bind SaveBackup.Creation}" VerticalAlignment="Center"/>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <AppBarButton Visibility="Collapsed" Command="{x:Bind Restore}" CommandParameter="{x:Bind SaveBackup}"/>
+                                <AppBarButton Visibility="Collapsed" Command="{x:Bind Delete}" CommandParameter="{x:Bind SaveBackup}"/>
+                            </StackPanel>
+                        </Grid>
                     </SwipeControl>
                 </Grid>
             </UserControl>

@@ -22,7 +22,7 @@
                 <StackPanel Margin="60,0" HorizontalAlignment="left" VerticalAlignment="Center"
                             Width="250">
                     <ComboBox x:Uid="GameName" x:Name="SelectedGameName" Header="{localeRes:StringResource Key=CreateBackupPageGameName}"
-                              ItemsSource="{x:Bind GameList}" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                              ItemsSource="{x:Bind _gameList}" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
                     <TextBox x:Uid="SaveName" x:Name="TextSaveName" Header="{localeRes:StringResource Key=CreateBackupPageSaveName}"
                              Margin="0, 25" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
                     <TextBox x:Name="TextDescription" Header="{localeRes:StringResource Key=CreateBackupPageDescription}"

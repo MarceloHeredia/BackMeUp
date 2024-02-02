@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BackMeUp.Models
+namespace BackMeUp.Data.Models
 {
     internal class SaveBackup
     {

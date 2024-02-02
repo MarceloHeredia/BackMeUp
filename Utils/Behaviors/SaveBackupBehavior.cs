@@ -1,5 +1,5 @@
-﻿using BackMeUp.Models;
-using System;
+﻿using System;
+using BackMeUp.Data.Models;
 
 namespace BackMeUp.Utils.Behaviors
 {
