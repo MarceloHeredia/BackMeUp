@@ -29,6 +29,7 @@
                              Opacity="0.7" Margin="0,0,0,25" Background="{ThemeResource AppBackgroundDefault}"/>
                     <Button Content="{extMethods:StringResource Key=CreateBackupPageCreateButton}"
                             Click="CreateBackup_Click" Opacity="0.7" Background="{ThemeResource AppBackgroundDefault}"/>
+                    <InfoBar x:Name="ErrorInfoBar" Severity="Error" IsOpen="False" IsClosable="False" />
                 </StackPanel>
             </Grid>
         </Grid>

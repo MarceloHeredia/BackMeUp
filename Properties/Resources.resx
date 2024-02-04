@@ -129,6 +129,9 @@
   <data name="AppTitleBarIcon" xml:space="preserve">
     <value>/Assets/Icons/BackMeUpLogo.ico</value>
   </data>
+  <data name="BackupFolder" xml:space="preserve">
+    <value>Backups</value>
+  </data>
   <data name="ConfigsFile" xml:space="preserve">
     <value>configs.json</value>
   </data>

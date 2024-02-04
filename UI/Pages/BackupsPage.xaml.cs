@@ -59,12 +59,6 @@ namespace BackMeUp.UI.Pages
         }
         #region Filters
 
-
-        private void Remove_NonMatching(IEnumerable<SaveBackupViewItem> filteredData)
-        {
-            _filteredSaves.RemoveAll(fs => !filteredData.Contains(fs));
-        }
-
         private void AddBack_SaveViewItems(IEnumerable<SaveBackupViewItem> filteredData)
             // When a user hits backspace, more items may need to be added back into the list
         {
@@ -91,12 +85,12 @@ namespace BackMeUp.UI.Pages
 
         private void OnFilterChanged(object sender, TextChangedEventArgs args)
         {
-            var filtered = _allSaves
+            var filteredData = _allSaves
                 .Where(sd => sd.SaveBackup.FilterContains(GameNameFilter.Text, SaveNameFilter.Text))
                 .OrderByDescending(sb => sb.SaveBackup.Creation);
 
-            Remove_NonMatching(filtered);
-            AddBack_SaveViewItems(filtered);
+            _filteredSaves.RemoveAll(fs => !filteredData.Contains(fs));
+            AddBack_SaveViewItems(filteredData);
         }
         #endregion
 

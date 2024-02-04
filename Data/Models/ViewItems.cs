@@ -13,6 +13,5 @@ namespace BackMeUp.Data.Models
     {
         public GameSaveConfig GameSaveConfig { get; set; }
         public ICommand Delete { get; set; }
-        public ICommand Edit { get; set; }
     }
 }

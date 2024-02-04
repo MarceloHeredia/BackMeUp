@@ -11,9 +11,11 @@ namespace BackMeUp.Data
     {
         internal static string ConfigsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Resources.AppFolder);
         internal static string ConfigsFile => Path.Combine(ConfigsFolder, Resources.ConfigsFile);
+        internal static string BackupFolder => Path.Combine(ConfigsFolder, Resources.BackupFolder);
 
         internal static Configs DefaultConfigsData => new()
         {
+            StorageLocation = BackupFolder,
             GameSaveConfigs = KnownSaveGameLocations,
             LastUpdated = DateTime.Now,
         };

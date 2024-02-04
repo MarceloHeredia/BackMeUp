@@ -4,74 +4,77 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace BackMeUp.Data.SettingsManager
+namespace BackMeUp.Data.SettingsManager;
+
+internal sealed class SettingsManager
 {
-    internal sealed class SettingsManager
+    private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
+
+    public static SettingsManager Instance => Lazy.Value;
+
+    private SettingsManager()
     {
-        private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
+        Settings = LoadConfigs();
+    }
 
-        public static SettingsManager Instance => Lazy.Value;
+    internal Configs Settings { get; private set; }
+    internal IList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs;
 
-        private SettingsManager()
+    internal Configs LoadConfigs()
+    {
+        if (!Directory.Exists(DefaultConfigs.ConfigsFolder))
         {
-            Settings = LoadConfigs();
+            Directory.CreateDirectory(DefaultConfigs.ConfigsFolder);
         }
 
-        internal Configs Settings { get; private set; }
-        internal IList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs;
-
-
-        internal Configs LoadConfigs()
+        if (!File.Exists(DefaultConfigs.ConfigsFile))
         {
-            if (!Directory.Exists(DefaultConfigs.ConfigsFolder))
-            {
-                Directory.CreateDirectory(DefaultConfigs.ConfigsFolder);
-            }
-
-            if (!File.Exists(DefaultConfigs.ConfigsFile))
-            {
-                // TODO: Log error or something before restoring
-                RestoreDefaultConfigs();
-                return DefaultConfigs.DefaultConfigsData;
-            }
-
-            var json = File.ReadAllText(DefaultConfigs.ConfigsFile);
-            var configs = JsonConvert.DeserializeObject<Configs>(json);
-            return configs;
-
+            // TODO: Log error or something before restoring
+            RestoreDefaultConfigs();
+            return DefaultConfigs.DefaultConfigsData;
         }
 
-        internal void RestoreDefaultConfigs()
-        {
-            if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
-                File.Exists(DefaultConfigs.ConfigsFile))
-            {
-                File.Delete(DefaultConfigs.ConfigsFile);
-            }
+        var json = File.ReadAllText(DefaultConfigs.ConfigsFile);
+        var configs = JsonConvert.DeserializeObject<Configs>(json);
+        return configs;
 
-            Settings = DefaultConfigs.DefaultConfigsData;
-            Write();
+    }
+
+    internal void RestoreDefaultConfigs()
+    {
+        if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
+            File.Exists(DefaultConfigs.ConfigsFile))
+        {
+            File.Delete(DefaultConfigs.ConfigsFile);
         }
 
-        internal bool Write()
-        {
-            try
-            {
-                var jsonConfigs = JsonConvert.SerializeObject(Settings, Formatting.Indented);
-                File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
-                return true;
-            }
-            catch (Exception) // TODO: Log error
-            {
-                return false;
-            }
-        }
+        Settings = DefaultConfigs.DefaultConfigsData;
+        Write();
+    }
 
-        internal bool AddGameSaveConfig(GameSaveConfig gameSaveConfig)
+    internal bool Write()
+    {
+        try
         {
-            Settings.GameSaveConfigs.Add(gameSaveConfig);
-            return Write();
+            var jsonConfigs = JsonConvert.SerializeObject(Settings, Formatting.Indented);
+            File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
+            return true;
         }
+        catch (Exception) // TODO: Log error
+        {
+            return false;
+        }
+    }
 
+    internal bool AddGameSaveConfig(GameSaveConfig gameSaveConfig)
+    {
+        Settings.GameSaveConfigs.Add(gameSaveConfig);
+        return Write();
+    }
+
+    internal bool RemoveGameSaveConfig(GameSaveConfig gameSaveConfig)
+    {
+        Settings.GameSaveConfigs.Remove(gameSaveConfig);
+        return Write();
     }
 }

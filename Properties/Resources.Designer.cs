@@ -97,6 +97,15 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backups.
+        /// </summary>
+        internal static string BackupFolder {
+            get {
+                return ResourceManager.GetString("BackupFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to configs.json.
         /// </summary>
         internal static string ConfigsFile {

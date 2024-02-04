@@ -6,6 +6,8 @@ namespace BackMeUp.Data.Models
 {
     internal class Configs
     {
+
+        public string StorageLocation { get; set; }
         public IList<GameSaveConfig> GameSaveConfigs { get; set; }
         [JsonProperty(nameof(Version))]
         public static Version Version => new(1, 0, 0, 0);

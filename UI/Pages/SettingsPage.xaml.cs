@@ -16,19 +16,16 @@ namespace BackMeUp.UI.Pages
     {
         private readonly SettingsManager _settingsManager = SettingsManager.Instance;
         private readonly ObservableCollection<GameSaveConfigViewItem> _gameSaveConfigs;
-        private readonly StandardUICommand _deleteCommand, _editCommand;
+        private readonly StandardUICommand _deleteCommand;
+
+        //TODO: Investigate if Edit button is needed
         public SettingsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             _deleteCommand = new StandardUICommand(StandardUICommandKind.Delete);
             _deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
             _deleteCommand.Description = ResourceManagementHelper.GetResource("SettingsPageDeleteTooltip");
-
-            _editCommand = new StandardUICommand(StandardUICommandKind.Open);
-            _editCommand.ExecuteRequested += EditCommand_ExecuteRequested;
-            _editCommand.Label = ResourceManagementHelper.GetResource("SettingsPageEdit");
-            _editCommand.Description = ResourceManagementHelper.GetResource("SettingsPageEditTooltip");
 
 
             _gameSaveConfigs = new ObservableCollection<GameSaveConfigViewItem>(
@@ -36,7 +33,6 @@ namespace BackMeUp.UI.Pages
             {
                 GameSaveConfig = gameSaveConfig,
                 Delete = _deleteCommand,
-                Edit = _editCommand
             }));
         }
 
@@ -50,49 +46,19 @@ namespace BackMeUp.UI.Pages
                 {
                     GameSaveConfig = gsConfig,
                     Delete = _deleteCommand,
-                    Edit = _editCommand
                 }));
         }
 
 
         #region Management
 
-        private void EditCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args) //TODO implement this
+        private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
         {
-            //if (args.Parameter != null)
-            //{
-            //    foreach (var i in collection)
-            //    {
-            //        if (i.Text == (args.Parameter as string))
-            //        {
-            //            collection.Remove(i);
-            //            return;
-            //        }
-            //    }
-            //}
-            //if (ListViewRight.SelectedIndex != -1)
-            //{
-            //    collection.RemoveAt(ListViewRight.SelectedIndex);
-            //}
-        }
+            if (args.Parameter is not GameSaveConfig gameSaveConfig) return;
+            _settingsManager.RemoveGameSaveConfig(gameSaveConfig);
 
-        private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args) //TODO implement this
-        {
-            //if (args.Parameter != null)
-            //{
-            //    foreach (var i in collection)
-            //    {
-            //        if (i.Text == (args.Parameter as string))
-            //        {
-            //            collection.Remove(i);
-            //            return;
-            //        }
-            //    }
-            //}
-            //if (ListViewRight.SelectedIndex != -1)
-            //{
-            //    collection.RemoveAt(ListViewRight.SelectedIndex);
-            //}
+            _gameSaveConfigs.RemoveAll(gsConfigViewItem => gsConfigViewItem.GameSaveConfig.Equals(gameSaveConfig));
+            
         }
 
         #endregion

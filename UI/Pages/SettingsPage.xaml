@@ -18,7 +18,6 @@
                             <VisualState x:Name="HoverButtonsShown">
                                 <VisualState.Setters>
                                     <Setter Target="DeleteButton.Visibility" Value="Visible" />
-                                    <Setter Target="EditButton.Visibility" Value="Visible" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -30,8 +29,6 @@
                                 <TextBlock Text="{x:Bind GameSaveConfig.SavePath}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <AppBarButton Name="EditButton" Visibility="Collapsed" Command="{x:Bind Edit}" 
-                                              CommandParameter="{x:Bind GameSaveConfig}"/>
                                 <AppBarButton Name="DeleteButton" Visibility="Collapsed" 
                                               Command="{x:Bind Delete}" CommandParameter="{x:Bind GameSaveConfig}"/>
                             </StackPanel>
@@ -41,23 +38,30 @@
             </UserControl>
         </DataTemplate>
     </Page.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ListView
-            CornerRadius="{StaticResource ControlCornerRadius}"
-            ItemsSource="{x:Bind _gameSaveConfigs}"
-            ItemTemplate="{StaticResource GameSaveConfigViewTemplate}"
-            SelectionMode="Single"
-            ShowsScrollingPlaceholders="True"
-            BorderThickness="1"
-            BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-        />
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0, 20, 0, 0" Spacing="5">
-            <Button Content="{extMethods:StringResource Key=SettingsPageAddSaveSetting}" Click="AddSaveSettings_OnClick"/>
-            <components:ResetToDefaultControl ResetButtonClick="ResetCallback"/>
-        </StackPanel>
-    </Grid>
+    <Pivot>
+        <PivotItem Header="General">
+
+        </PivotItem>
+        <PivotItem Header="Games">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListView
+                    CornerRadius="{StaticResource ControlCornerRadius}"
+                    ItemsSource="{x:Bind _gameSaveConfigs}"
+                    ItemTemplate="{StaticResource GameSaveConfigViewTemplate}"
+                    SelectionMode="Single"
+                    ShowsScrollingPlaceholders="True"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                />
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0, 20, 0, 0" Spacing="5">
+                    <Button Content="{extMethods:StringResource Key=SettingsPageAddSaveSetting}" Click="AddSaveSettings_OnClick"/>
+                    <components:ResetToDefaultControl ResetButtonClick="ResetCallback"/>
+                </StackPanel>
+            </Grid>
+        </PivotItem>
+    </Pivot>
 </Page>
