@@ -1,13 +1,27 @@
 ﻿using BackMeUp.Data.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace BackMeUp.Data.ConfigsManagement
+namespace BackMeUp.Data.SettingsManager
 {
-    internal static class ConfigsManagement
+    internal sealed class SettingsManager
     {
-        internal static Configs LoadConfigs()
+        private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
+
+        public static SettingsManager Instance => Lazy.Value;
+
+        private SettingsManager()
+        {
+            Settings = LoadConfigs();
+        }
+
+        internal Configs Settings { get; private set; }
+        internal IList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs;
+
+
+        internal Configs LoadConfigs()
         {
             if (!Directory.Exists(DefaultConfigs.ConfigsFolder))
             {
@@ -27,7 +41,7 @@ namespace BackMeUp.Data.ConfigsManagement
 
         }
 
-        internal static void RestoreDefaultConfigs()
+        internal void RestoreDefaultConfigs()
         {
             if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
                 File.Exists(DefaultConfigs.ConfigsFile))
@@ -35,14 +49,15 @@ namespace BackMeUp.Data.ConfigsManagement
                 File.Delete(DefaultConfigs.ConfigsFile);
             }
 
-            WriteConfigs(DefaultConfigs.DefaultConfigsData);
+            Settings = DefaultConfigs.DefaultConfigsData;
+            Write();
         }
 
-        internal static bool WriteConfigs(Configs configs)
+        internal bool Write()
         {
             try
             {
-                var jsonConfigs = JsonConvert.SerializeObject(configs, Formatting.Indented);
+                var jsonConfigs = JsonConvert.SerializeObject(Settings, Formatting.Indented);
                 File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
                 return true;
             }
@@ -51,5 +66,12 @@ namespace BackMeUp.Data.ConfigsManagement
                 return false;
             }
         }
+
+        internal bool AddGameSaveConfig(GameSaveConfig gameSaveConfig)
+        {
+            Settings.GameSaveConfigs.Add(gameSaveConfig);
+            return Write();
+        }
+
     }
 }

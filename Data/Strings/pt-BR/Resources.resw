@@ -153,6 +153,27 @@
   <data name="CreateBackupPageTitle" xml:space="preserve">
     <value>Criar backup</value>
   </data>
+  <data name="CreateGameConfigDialogCloseButton" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="CreateGameConfigDialogGameName" xml:space="preserve">
+    <value>Nome do jogo</value>
+  </data>
+  <data name="CreateGameConfigDialogGameNameError" xml:space="preserve">
+    <value>Nome do jogo é obrigatório</value>
+  </data>
+  <data name="CreateGameConfigDialogPrimaryButton" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="CreateGameConfigDialogSaveLocationError" xml:space="preserve">
+    <value>Local do save é obrigatório</value>
+  </data>
+  <data name="CreateGameConfigDialogSelectLocation" xml:space="preserve">
+    <value>Selecionar local do save</value>
+  </data>
+  <data name="CreateGameConfigDialogTitle" xml:space="preserve">
+    <value>Criar configuração</value>
+  </data>
   <data name="HomePageParagraph" xml:space="preserve">
     <value>Cat ipsum dolor sit amet, cattt catt cattty cat being a cat or poop in a handbag look delicious and drink the soapy mopping up water then puke giant foamy fur-balls attack the child. Stretch walk on a keyboard or love fish. Meow all night pounce on unsuspecting person or purr when being pet but kitten is playing with dead mouse. Twitch tail in permanent irritation find a way to fit in tiny box yet don't nosh on the birds run up and down stairs sit on human they not getting up ever really likes hummus walk on car leaving trail of paw prints on hood and windshield.</value>
   </data>
@@ -167,6 +188,9 @@
   </data>
   <data name="MainWindowList" xml:space="preserve">
     <value>Listar</value>
+  </data>
+  <data name="SettingsPageAddSaveSetting" xml:space="preserve">
+    <value>Adicionar configuração</value>
   </data>
   <data name="SettingsPageDeleteTooltip" xml:space="preserve">
     <value>Exclui a configuração selecionada</value>
@@ -183,7 +207,16 @@
   <data name="SettingsPageResetConfirm" xml:space="preserve">
     <value>Sim</value>
   </data>
-  <data name="SettingsPageResetFlyout" xml:space="preserve">
-    <value>Isso irá restaurar todas configurações para o padrão. Deseja continuar?</value>
+  <data name="SettingsPageResetConfirm2" xml:space="preserve">
+    <value>Sim, tenho certeza.</value>
+  </data>
+  <data name="SettingsPageResetFlyout2" xml:space="preserve">
+    <value>Isso não apagará nenhum backup criado com as configurações atuais, apenas afetará futuros backups. Tem certeza que deseja restaurar?</value>
+  </data>
+  <data name="SettingsPageResetFlyoutLine1" xml:space="preserve">
+    <value>Isso irá restaurar todas configurações para o padrão.</value>
+  </data>
+  <data name="SettingsPageResetFlyoutLine2" xml:space="preserve">
+    <value>Deseja continuar?</value>
   </data>
 </root>

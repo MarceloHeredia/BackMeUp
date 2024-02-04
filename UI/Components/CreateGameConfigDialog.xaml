@@ -1,0 +1,23 @@
+<ContentDialog
+    x:Class="BackMeUp.UI.Components.CreateGameConfigDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
+    mc:Ignorable="d"
+    Title="{extMethods:StringResource Key=CreateGameConfigDialogTitle}"
+    PrimaryButtonText="{extMethods:StringResource Key=CreateGameConfigDialogPrimaryButton}"
+    CloseButtonText="{extMethods:StringResource Key=CreateGameConfigDialogCloseButton}"
+    PrimaryButtonClick="CreateGameConfigDialog_OnPrimaryButtonClick"
+    CloseButtonClick="CreateGameConfigDialog_OnCloseButtonClick"
+    CornerRadius="{StaticResource ControlCornerRadius}">
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Spacing="8">
+        <TextBox Name="GameNameTextBox" TextChanged="GameNameTextBox_OnTextChanged" 
+                 Header="{extMethods:StringResource Key=CreateGameConfigDialogGameName}" />
+        <Button Content="{extMethods:StringResource Key=CreateGameConfigDialogSelectLocation}"
+                Click="SaveLocationPicker_OnClick"/>
+        <TextBlock x:Name="PickFolderOutputTextBlock" TextWrapping="Wrap"/>
+        <InfoBar x:Name="ErrorInfoBar" Severity="Error" IsOpen="False" IsClosable="False" />
+    </StackPanel>
+</ContentDialog>

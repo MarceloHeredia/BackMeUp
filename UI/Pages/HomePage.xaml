@@ -4,14 +4,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:localeRes="using:BackMeUp.Utils.ExtensionMethods"
+    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
     mc:Ignorable="d">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
-            <TextBlock Foreground="{ThemeResource TextColorDefault}" Text="{localeRes:StringResource Key=HomePageTitle}"
+            <TextBlock Foreground="{ThemeResource TextColorDefault}" Text="{extMethods:StringResource Key=HomePageTitle}"
                        HorizontalAlignment="Center" FontSize="30"/>
-            <TextBlock Foreground="{ThemeResource TextColorDefault}" Text="{localeRes:StringResource Key=HomePageParagraph}"
+            <TextBlock Foreground="{ThemeResource TextColorDefault}" Text="{extMethods:StringResource Key=HomePageParagraph}"
                        FontSize="16" Padding="30,30, 30, 0" TextWrapping="Wrap"/>
             <Image CacheMode="BitmapCache" Source="/Assets/Images/dancin.gif" MaxWidth="800" Margin="30"/>
         </StackPanel>

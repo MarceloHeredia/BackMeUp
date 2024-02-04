@@ -1,5 +1,5 @@
-using BackMeUp.Data.ConfigsManagement;
 using BackMeUp.Data.Models;
+using BackMeUp.Data.SettingsManager;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace BackMeUp.UI.Pages
 {
     public sealed partial class CreateBackupPage
     {
-        private readonly Configs _configs = ConfigsManagement.LoadConfigs();
+        private readonly Configs _configs = SettingsManager.Instance.LoadConfigs();
         private readonly List<string> _gameList;
         public CreateBackupPage()
         {

@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
 using WinUIEx;
 
 namespace BackMeUp
@@ -17,18 +19,21 @@ namespace BackMeUp
             this.InitializeComponent();
         }
 
+        public static MainWindow MainWindow { get; private set; }
+        public static IntPtr MainWindowHandle => WindowNative.GetWindowHandle(MainWindow);
+
         /// <summary>
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            var mWindow = new MainWindow();
+            MainWindow = new MainWindow();
 
-            mWindow.SetWindowSize(1200, 800);
-            mWindow.CenterOnScreen();
+            MainWindow.SetWindowSize(1200, 800);
+            MainWindow.CenterOnScreen();
 
-            mWindow.Activate();
+            MainWindow.Activate();
 
         }
 

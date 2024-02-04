@@ -6,7 +6,7 @@ namespace BackMeUp.Utils.ExtensionMethods
     [MarkupExtensionReturnType(ReturnType = typeof(string))]
     internal class StringResourceExtension : MarkupExtension
     {
-        private static readonly ResourceManager ResourceManager = new();
+        private static readonly Microsoft.Windows.ApplicationModel.Resources.ResourceManager ResourceManager = new();
         private static readonly ResourceContext ResourceContext = ResourceManager.CreateResourceContext();
 
         public StringResourceExtension() { }

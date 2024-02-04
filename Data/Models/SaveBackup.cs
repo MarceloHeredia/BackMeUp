@@ -4,10 +4,10 @@ namespace BackMeUp.Data.Models
 {
     internal class SaveBackup
     {
-        public string GameName { get; set; }
-        public string SaveName { get; set; }
-        public DateTime Creation { get; set; }
-        public string Description { get; set; }
+        public string GameName { get; init; }
+        public string SaveName { get; init; }
+        public DateTime Creation { get; init; }
+        public string Description { get; init; }
 
         public SaveBackup() { }
         public SaveBackup(string gameName, string saveName, DateTime creation = new(), string description = "")
@@ -30,6 +30,18 @@ namespace BackMeUp.Data.Models
         public override string ToString()
         {
             return $"Game: {this.GameName}\nSave Name: {this.SaveName}\n\t\t{this.Creation}\n{this.Description}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not SaveBackup saveBackupObj) return false;
+
+            return GameName.Equals(saveBackupObj.GameName) && SaveName.Equals(saveBackupObj.SaveName) && Creation.Equals(saveBackupObj.Creation);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(GameName, SaveName, Creation);
         }
     }
 }

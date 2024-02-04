@@ -14,7 +14,19 @@ namespace BackMeUp.Data.Models
 
     internal class GameSaveConfig
     {
-        public string Game { get; set; }
-        public string SavePath { get; set; }
+        public string Game { get; init; }
+        public string SavePath { get; init; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not GameSaveConfig gsConfigObj) return false;
+
+            return Game.Equals(gsConfigObj.Game) && SavePath.Equals(gsConfigObj.SavePath);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Game, SavePath);
+        }
     }
 }
