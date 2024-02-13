@@ -10,7 +10,7 @@
   <Identity
     Name="67a0a0c3-d450-4749-9aa6-BackMeUp"
     Publisher="CN=hered"
-    Version="1.0.0.0" />
+    Version="0.1.15.0" />
 
   <mp:PhoneIdentity PhoneProductId="67a0a0c3-d450-4749-9aa6-ecb28961f6f8" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

@@ -192,6 +192,18 @@
   <data name="SettingsPageAddSaveSetting" xml:space="preserve">
     <value>Adicionar configuração</value>
   </data>
+  <data name="SettingsPageBackupLocation" xml:space="preserve">
+    <value>Local do backup</value>
+  </data>
+  <data name="SettingsPageChangeBackupLocation" xml:space="preserve">
+    <value>Mudar local do backup</value>
+  </data>
+  <data name="SettingsPageContactMe" xml:space="preserve">
+    <value>Me contate</value>
+  </data>
+  <data name="SettingsPageContactMeText" xml:space="preserve">
+    <value>Me informe se tiver sugestões ou perguntas.</value>
+  </data>
   <data name="SettingsPageDeleteTooltip" xml:space="preserve">
     <value>Exclui a configuração selecionada</value>
   </data>
@@ -218,5 +230,11 @@
   </data>
   <data name="SettingsPageResetFlyoutLine2" xml:space="preserve">
     <value>Deseja continuar?</value>
+  </data>
+  <data name="SettingsPageResetToDefaultBackupLocation" xml:space="preserve">
+    <value>Restaurar local padrão</value>
+  </data>
+  <data name="SettingsPageVersion" xml:space="preserve">
+    <value>Versão</value>
   </data>
 </root>

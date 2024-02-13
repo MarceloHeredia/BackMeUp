@@ -135,6 +135,9 @@
   <data name="ConfigsFile" xml:space="preserve">
     <value>configs.json</value>
   </data>
+  <data name="ContactUrl" xml:space="preserve">
+    <value>https://www.linkedin.com/in/herediamarcelo/</value>
+  </data>
   <data name="CreateBackupImage" xml:space="preserve">
     <value>/Assets/Images/lamp.gif</value>
   </data>

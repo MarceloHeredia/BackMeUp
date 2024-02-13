@@ -10,7 +10,7 @@ namespace BackMeUp.Data.Models
         public string StorageLocation { get; set; }
         public IList<GameSaveConfig> GameSaveConfigs { get; set; }
         [JsonProperty(nameof(Version))]
-        public static Version Version => new(1, 0, 0, 0);
+        public static Version ConfigVersion => new(1, 0, 0);
         public DateTime LastUpdated { get; set; }
     }
 

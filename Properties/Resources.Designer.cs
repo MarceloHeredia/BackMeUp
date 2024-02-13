@@ -115,6 +115,15 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://www.linkedin.com/in/herediamarcelo/.
+        /// </summary>
+        internal static string ContactUrl {
+            get {
+                return ResourceManager.GetString("ContactUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /Assets/Images/lamp.gif.
         /// </summary>
         internal static string CreateBackupImage {

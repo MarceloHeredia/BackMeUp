@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -16,6 +16,12 @@
     <PackageIcon>BackMeUpLogo2.0.png</PackageIcon>
     <RepositoryUrl>https://github.com/MarceloHeredia/BackMeUp</RepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="UI\Components\SettingsPage\**" />
+    <EmbeddedResource Remove="UI\Components\SettingsPage\**" />
+    <None Remove="UI\Components\SettingsPage\**" />
+    <Page Remove="UI\Components\SettingsPage\**" />
+  </ItemGroup>
   <ItemGroup>
     <Content Remove="Assets\Images\bonf.png" />
     <Content Remove="Assets\Images\dancin.gif" />
@@ -37,8 +43,8 @@
     <None Remove="Assets\Icons\bonfire.ico" />
     <None Remove="Themes\ThemeResources.xaml" />
     <None Remove="UI\AppTitleBar.xaml" />
-    <None Remove="UI\Components\CreateGameConfigDialog.xaml" />
-    <None Remove="UI\Components\ResetToDefaultControl.xaml" />
+    <None Remove="UI\Components\SettingsGamesControl.xaml" />
+    <None Remove="UI\Components\SettingsHelpControl.xaml" />
     <None Remove="UI\Pages\BackupsPage.xaml" />
     <None Remove="UI\Pages\CreateBackupPage.xaml" />
     <None Remove="UI\Pages\HomePage.xaml" />
@@ -55,7 +61,12 @@
     <PackageReference Include="WinUIEx" Version="2.3.3" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
-
+  <PropertyGroup>
+    <VersionPrefix>0.1.15</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <Version>$(VersionPrefix)$(VersionSuffix)</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+  </PropertyGroup>
   <!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
     Tools extension to be activated for this project even if the Windows App SDK Nuget
@@ -104,6 +115,12 @@
     <None Update="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="UI\Components\SettingsGamesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UI\Components\SettingsHelpControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="UI\Components\CreateGameConfigDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,4 +163,7 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
+  <ItemGroup>
+    <PRIResource Remove="UI\Components\SettingsPage\**" />
+  </ItemGroup>
 </Project>

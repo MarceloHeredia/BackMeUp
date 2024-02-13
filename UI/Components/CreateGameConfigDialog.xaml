@@ -11,7 +11,9 @@
     CloseButtonText="{extMethods:StringResource Key=CreateGameConfigDialogCloseButton}"
     PrimaryButtonClick="CreateGameConfigDialog_OnPrimaryButtonClick"
     CloseButtonClick="CreateGameConfigDialog_OnCloseButtonClick"
-    CornerRadius="{StaticResource ControlCornerRadius}">
+    CornerRadius="{StaticResource ControlCornerRadius}"
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Spacing="8">
         <TextBox Name="GameNameTextBox" TextChanged="GameNameTextBox_OnTextChanged" 
                  Header="{extMethods:StringResource Key=CreateGameConfigDialogGameName}" />
