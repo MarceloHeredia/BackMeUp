@@ -2,7 +2,7 @@ using BackMeUp.Data.SettingsManager;
 using Microsoft.UI.Xaml;
 
 
-namespace BackMeUp.UI.Components
+namespace BackMeUp.UI.Controls
 {
     public delegate void ResetEventHandler(ResetResult result);
     public enum ResetResult

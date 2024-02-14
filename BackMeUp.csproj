@@ -44,6 +44,7 @@
     <None Remove="Themes\ThemeResources.xaml" />
     <None Remove="UI\AppTitleBar.xaml" />
     <None Remove="UI\Components\SettingsGamesControl.xaml" />
+    <None Remove="UI\Components\SettingsGeneralControl.xaml" />
     <None Remove="UI\Components\SettingsHelpControl.xaml" />
     <None Remove="UI\Pages\BackupsPage.xaml" />
     <None Remove="UI\Pages\CreateBackupPage.xaml" />
@@ -78,6 +79,7 @@
   <ItemGroup>
     <Folder Include="Data\DB\" />
     <Folder Include="Data\DirectoryManagement\" />
+    <Folder Include="UI\Controls\" />
     <Folder Include="Utils\Controls\" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +117,9 @@
     <None Update="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="UI\Components\SettingsGeneralControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="UI\Components\SettingsGamesControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

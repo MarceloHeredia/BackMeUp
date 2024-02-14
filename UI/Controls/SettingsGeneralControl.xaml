@@ -1,0 +1,20 @@
+<UserControl
+    x:Class="BackMeUp.UI.Controls.SettingsGeneralControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:components="using:BackMeUp.UI.Components"
+    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
+    mc:Ignorable="d">
+    <StackPanel Orientation="Vertical" Spacing="10" Margin="0, 20, 0, 0">
+        <TextBlock Text="{extMethods:StringResource Key=SettingsPageBackupLocation}" FontSize="20"/>
+        <TextBlock x:Name="PickFolderOutputTextBlock" TextWrapping="Wrap"/>
+        <components:GroupPanel>
+            <Button Content="{extMethods:StringResource Key=SettingsPageChangeBackupLocation}"
+                    Click="BackupLocationPicker_OnClick"/>
+            <Button Content="{extMethods:StringResource Key=SettingsPageResetToDefaultBackupLocation}"/>
+        </components:GroupPanel>
+        <NavigationViewItemSeparator/>
+    </StackPanel>
+</UserControl>

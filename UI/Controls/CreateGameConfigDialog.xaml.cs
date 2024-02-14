@@ -8,7 +8,7 @@ using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 
 
-namespace BackMeUp.UI.Components
+namespace BackMeUp.UI.Controls
 {
 
     public enum CreateGameConfigResult

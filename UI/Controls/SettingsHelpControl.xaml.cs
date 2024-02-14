@@ -1,7 +1,6 @@
-using Microsoft.UI.Xaml.Controls;
 using System.Reflection;
 
-namespace BackMeUp.UI.Components
+namespace BackMeUp.UI.Controls
 {
     public sealed partial class SettingsHelpControl
     {
