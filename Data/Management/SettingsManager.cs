@@ -4,21 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace BackMeUp.Data.SettingsManager;
+namespace BackMeUp.Data.Management;
 
 internal sealed class SettingsManager
 {
-    private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
+    
+    private Configs Settings { get; set; }
+    internal IReadOnlyList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs.AsReadOnly();
 
-    public static SettingsManager Instance => Lazy.Value;
-
-    private SettingsManager()
-    {
-        Settings = LoadConfigs();
-    }
-
-    internal Configs Settings { get; private set; }
-    internal IList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs;
+    internal string StorageLocation => Settings.StorageLocation;
 
     internal Configs LoadConfigs()
     {
@@ -41,7 +35,7 @@ internal sealed class SettingsManager
     }
 
     internal void RestoreDefaultConfigs()
-    {
+    {//TODO: move files?
         if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
             File.Exists(DefaultConfigs.ConfigsFile))
         {
@@ -52,7 +46,7 @@ internal sealed class SettingsManager
         Write();
     }
 
-    internal bool Write()
+    private bool Write()
     {
         try
         {
@@ -77,4 +71,13 @@ internal sealed class SettingsManager
         Settings.GameSaveConfigs.Remove(gameSaveConfig);
         return Write();
     }
+
+    #region Constructor
+    private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
+    public static SettingsManager Instance => Lazy.Value;
+    private SettingsManager()
+    {
+        Settings = LoadConfigs();
+    }
+    #endregion
 }

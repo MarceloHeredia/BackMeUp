@@ -5,15 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:BackMeUp.UI.Controls"
+    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
     mc:Ignorable="d">
     <Pivot>
-        <PivotItem Header="General">
+        <PivotItem Header="{extMethods:StringResource Key=SettingsPageGeneral}">
             <controls:SettingsGeneralControl/>
         </PivotItem>
-        <PivotItem Header="Games">
+        <PivotItem Header="{extMethods:StringResource Key=SettingsPageGames}">
             <controls:SettingsGamesControl/>
         </PivotItem>
-        <PivotItem Header="Help">
+        <PivotItem Header="{extMethods:StringResource Key=SettingsPageHelp}">
             <controls:SettingsHelpControl/>
         </PivotItem>
     </Pivot>

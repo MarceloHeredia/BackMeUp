@@ -1,6 +1,5 @@
+using BackMeUp.Data.Management;
 using BackMeUp.Data.Models;
-using BackMeUp.Data.SettingsManager;
-using BackMeUp.Utils;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -30,14 +29,14 @@ namespace BackMeUp.UI.Controls
         {
             if (string.IsNullOrEmpty(GameNameTextBox.Text))
             {
-                ErrorInfoBar.Message = ResourceManagementHelper.GetResource("CreateGameConfigDialogGameNameError");
+                ErrorInfoBar.Message = ResourcesManager.GetResource("CreateGameConfigDialogGameNameError");
                 ErrorInfoBar.IsOpen = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(PickFolderOutputTextBlock.Text))
             {
-                ErrorInfoBar.Message = ResourceManagementHelper.GetResource("CreateGameConfigDialogSaveLocationError");
+                ErrorInfoBar.Message = ResourcesManager.GetResource("CreateGameConfigDialogSaveLocationError");
                 ErrorInfoBar.IsOpen = true;
             }
         }

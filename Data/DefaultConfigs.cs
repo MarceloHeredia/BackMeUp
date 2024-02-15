@@ -9,7 +9,7 @@ namespace BackMeUp.Data
 {
     internal static class DefaultConfigs
     {
-        internal static string ConfigsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Resources.AppFolder);
+        internal static string ConfigsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Resources.AppFolder);
         internal static string ConfigsFile => Path.Combine(ConfigsFolder, Resources.ConfigsFile);
         internal static string BackupFolder => Path.Combine(ConfigsFolder, Resources.BackupFolder);
 

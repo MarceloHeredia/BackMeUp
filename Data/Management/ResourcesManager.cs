@@ -1,8 +1,8 @@
 ﻿using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace BackMeUp.Utils
+namespace BackMeUp.Data.Management
 {
-    internal static class ResourceManagementHelper
+    internal static class ResourcesManager
     {
         private static readonly ResourceManager ResourceManager = new();
         private static readonly ResourceContext ResourceContext = ResourceManager.CreateResourceContext();

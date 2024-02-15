@@ -1,6 +1,5 @@
+using BackMeUp.Data.Management;
 using BackMeUp.Data.Models;
-using BackMeUp.Data.SettingsManager;
-using BackMeUp.Utils;
 using BackMeUp.Utils.ExtensionMethods;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -24,7 +23,7 @@ namespace BackMeUp.UI.Controls
 
             _deleteCommand = new StandardUICommand(StandardUICommandKind.Delete);
             _deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-            _deleteCommand.Description = ResourceManagementHelper.GetResource("SettingsPageDeleteTooltip");
+            _deleteCommand.Description = ResourcesManager.GetResource("SettingsPageDeleteTooltip");
 
 
             _gameSaveConfigs = new ObservableCollection<GameSaveConfigViewItem>(

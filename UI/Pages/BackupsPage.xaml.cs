@@ -1,4 +1,3 @@
-using BackMeUp.Utils;
 using BackMeUp.Utils.Behaviors;
 using BackMeUp.Utils.ExtensionMethods;
 using Microsoft.UI.Xaml;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using BackMeUp.Data.Models;
+using BackMeUp.Data.Management;
 
 
 namespace BackMeUp.UI.Pages
@@ -26,12 +26,12 @@ namespace BackMeUp.UI.Pages
 
             _deleteCommand = new StandardUICommand(StandardUICommandKind.Delete);
             _deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-            _deleteCommand.Description = ResourceManagementHelper.GetResource("BackupsPageDeleteTooltip");
+            _deleteCommand.Description = ResourcesManager.GetResource("BackupsPageDeleteTooltip");
 
             _restoreCommand = new StandardUICommand(StandardUICommandKind.Copy);
             _restoreCommand.ExecuteRequested += RestoreCommand_ExecuteRequested;
-            _restoreCommand.Label = ResourceManagementHelper.GetResource("BackupsPageRestore");
-            _restoreCommand.Description = ResourceManagementHelper.GetResource("BackupsPageRestoreTooltip");
+            _restoreCommand.Label = ResourcesManager.GetResource("BackupsPageRestore");
+            _restoreCommand.Description = ResourcesManager.GetResource("BackupsPageRestoreTooltip");
 
 
             SomeTest().ForEach(saveBackup =>

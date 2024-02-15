@@ -43,6 +43,7 @@
     <None Remove="Assets\Icons\bonfire.ico" />
     <None Remove="Themes\ThemeResources.xaml" />
     <None Remove="UI\AppTitleBar.xaml" />
+    <None Remove="UI\Components\HelpInfoBadge.xaml" />
     <None Remove="UI\Components\SettingsGamesControl.xaml" />
     <None Remove="UI\Components\SettingsGeneralControl.xaml" />
     <None Remove="UI\Components\SettingsHelpControl.xaml" />
@@ -78,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\DB\" />
-    <Folder Include="Data\DirectoryManagement\" />
     <Folder Include="UI\Controls\" />
     <Folder Include="Utils\Controls\" />
   </ItemGroup>
@@ -117,6 +117,9 @@
     <None Update="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="UI\Components\HelpInfoBadge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="UI\Components\SettingsGeneralControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

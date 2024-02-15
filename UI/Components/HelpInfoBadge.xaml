@@ -1,0 +1,16 @@
+<UserControl
+    x:Class="BackMeUp.UI.Components.HelpInfoBadge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <InfoBadge Style="{StaticResource AttentionIconInfoBadgeStyle}" Background="{ThemeResource NavigationViewDefaultPaneBackground}">
+        <InfoBadge.IconSource>
+            <FontIconSource Glyph="&#xE11B;" Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
+        </InfoBadge.IconSource>
+        <ToolTipService.ToolTip>
+            <ToolTip Content="{x:Bind HelpInfoText}"/>
+        </ToolTipService.ToolTip>
+    </InfoBadge>
+</UserControl>

@@ -1,5 +1,5 @@
+using BackMeUp.Data.Management;
 using BackMeUp.Data.Models;
-using BackMeUp.Data.SettingsManager;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;

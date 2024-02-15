@@ -8,12 +8,16 @@
     xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
     mc:Ignorable="d">
     <StackPanel Orientation="Vertical" Spacing="10" Margin="0, 20, 0, 0">
-        <TextBlock Text="{extMethods:StringResource Key=SettingsPageBackupLocation}" FontSize="20"/>
-        <TextBlock x:Name="PickFolderOutputTextBlock" TextWrapping="Wrap"/>
         <components:GroupPanel>
-            <Button Content="{extMethods:StringResource Key=SettingsPageChangeBackupLocation}"
+            <TextBlock Text="{extMethods:StringResource Key=SettingsGeneralControlBackupLocation}" FontSize="20"/>
+            <components:HelpInfoBadge HelpInfoText="{extMethods:StringResource Key=SettingsGeneralControlTooltip}"/>
+        </components:GroupPanel>
+        <TextBlock x:Name="PickFolderOutputTextBlock" Text="{x:Bind _settingsManager.StorageLocation}" TextWrapping="Wrap"/>
+        <components:GroupPanel>
+            <Button Content="{extMethods:StringResource Key=SettingsGeneralControlChangeBackupLocation}"
                     Click="BackupLocationPicker_OnClick"/>
-            <Button Content="{extMethods:StringResource Key=SettingsPageResetToDefaultBackupLocation}"/>
+            <Button Content="{extMethods:StringResource Key=SettingsGeneralControlResetToDefaultBackupLocation}"
+                    Click="RestoreDefaultBackupLocation_OnClick"/>
         </components:GroupPanel>
         <NavigationViewItemSeparator/>
     </StackPanel>

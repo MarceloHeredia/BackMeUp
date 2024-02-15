@@ -1,4 +1,4 @@
-using BackMeUp.Data.SettingsManager;
+using BackMeUp.Data.Management;
 using Microsoft.UI.Xaml;
 
 

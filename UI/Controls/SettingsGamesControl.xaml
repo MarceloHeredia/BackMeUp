@@ -54,7 +54,7 @@
             BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
         />
         <components:GroupPanel Grid.Row="1" Margin="0, 20, 0, 0">
-            <Button Content="{extMethods:StringResource Key=SettingsPageAddSaveSetting}" Click="AddSaveSettings_OnClick"/>
+            <Button Content="{extMethods:StringResource Key=SettingsGamesControlAddSaveSetting}" Click="AddSaveSettings_OnClick"/>
             <controls:ResetToDefaultControl ResetButtonClick="ResetCallback"/>
         </components:GroupPanel>
     </Grid>

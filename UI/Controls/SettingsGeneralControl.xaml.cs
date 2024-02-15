@@ -1,6 +1,8 @@
-using BackMeUp.Data.SettingsManager;
+using BackMeUp.Data;
+using BackMeUp.Data.Management;
 using Microsoft.UI.Xaml;
 using System;
+using System.IO;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 
@@ -31,6 +33,24 @@ namespace BackMeUp.UI.Controls
 
             StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", folder);
             PickFolderOutputTextBlock.Text = folder.Path;
+        }
+
+        private void RestoreDefaultBackupLocation_OnClick(object sender, RoutedEventArgs e)
+        {
+            var location = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BackMeUp");
+
+            if (string.IsNullOrEmpty(location)) return;
+
+            try
+            {
+                if (!Directory.Exists(location))
+                {
+                    Directory.CreateDirectory(location);
+                }
+
+                File.WriteAllText(Path.Combine(location, "test.txt"), "Some Random Things");
+            }
+            catch{}
         }
     }
 }

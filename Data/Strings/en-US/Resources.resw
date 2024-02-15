@@ -189,20 +189,47 @@
   <data name="MainWindowList" xml:space="preserve">
     <value>List</value>
   </data>
-  <data name="SettingsPageAddSaveSetting" xml:space="preserve">
+  <data name="ResetToDefaultControlConfirm" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ResetToDefaultControlConfirm2" xml:space="preserve">
+    <value>Yes, I'm sure.</value>
+  </data>
+  <data name="ResetToDefaultControlFlyout2" xml:space="preserve">
+    <value>This will not erase any backup created with the current configurations, it'll only affect future backups. Do you really want to continue?</value>
+  </data>
+  <data name="ResetToDefaultControlFlyoutLine1" xml:space="preserve">
+    <value>This will reset all save locations to default.</value>
+  </data>
+  <data name="ResetToDefaultControlFlyoutLine2" xml:space="preserve">
+    <value>Do you want to continue?</value>
+  </data>
+  <data name="ResetToDefaultControlReset" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
+  <data name="SettingsGamesControlAddSaveSetting" xml:space="preserve">
     <value>Add setting</value>
   </data>
-  <data name="SettingsPageBackupLocation" xml:space="preserve">
+  <data name="SettingsGeneralControlBackupLocation" xml:space="preserve">
     <value>Backup location</value>
   </data>
-  <data name="SettingsPageChangeBackupLocation" xml:space="preserve">
+  <data name="SettingsGeneralControlChangeBackupLocation" xml:space="preserve">
     <value>Change backup location</value>
   </data>
-  <data name="SettingsPageContactMe" xml:space="preserve">
+  <data name="SettingsGeneralControlResetToDefaultBackupLocation" xml:space="preserve">
+    <value>Reset to default location</value>
+  </data>
+  <data name="SettingsGeneralControlTooltip" xml:space="preserve">
+    <value>Changing this setting will move all existing backups to the new location.</value>
+  </data>
+  <data name="SettingsHelpControlContactMe" xml:space="preserve">
     <value>Contact me</value>
   </data>
-  <data name="SettingsPageContactMeText" xml:space="preserve">
+  <data name="SettingsHelpControlContactMeText" xml:space="preserve">
     <value>Let me know if you have questions or suggestions.</value>
+  </data>
+  <data name="SettingsHelpControlVersion" xml:space="preserve">
+    <value>Version</value>
   </data>
   <data name="SettingsPageDeleteTooltip" xml:space="preserve">
     <value>Deletes the selected config</value>
@@ -213,28 +240,13 @@
   <data name="SettingsPageEditTooltip" xml:space="preserve">
     <value>Edits the selected config</value>
   </data>
-  <data name="SettingsPageReset" xml:space="preserve">
-    <value>Reset to default</value>
+  <data name="SettingsPageGames" xml:space="preserve">
+    <value>Games</value>
   </data>
-  <data name="SettingsPageResetConfirm" xml:space="preserve">
-    <value>Yes</value>
+  <data name="SettingsPageGeneral" xml:space="preserve">
+    <value>General</value>
   </data>
-  <data name="SettingsPageResetConfirm2" xml:space="preserve">
-    <value>Yes, I'm sure.</value>
-  </data>
-  <data name="SettingsPageResetFlyout2" xml:space="preserve">
-    <value>This will not erase any backup created with the current configurations, it'll only affect future backups. Do you really want to continue?</value>
-  </data>
-  <data name="SettingsPageResetFlyoutLine1" xml:space="preserve">
-    <value>This will reset all save locations to default.</value>
-  </data>
-  <data name="SettingsPageResetFlyoutLine2" xml:space="preserve">
-    <value>Do you want to continue?</value>
-  </data>
-  <data name="SettingsPageResetToDefaultBackupLocation" xml:space="preserve">
-    <value>Reset to default location</value>
-  </data>
-  <data name="SettingsPageVersion" xml:space="preserve">
-    <value>Version</value>
+  <data name="SettingsPageHelp" xml:space="preserve">
+    <value>Help</value>
   </data>
 </root>
