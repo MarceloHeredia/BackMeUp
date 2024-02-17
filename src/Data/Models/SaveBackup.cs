@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackMeUp.Data.Models
 {
     internal class SaveBackup
     {
+        [Required]
         public string GameName { get; init; }
+        [Required]
         public string SaveName { get; init; }
         public DateTime Creation { get; init; }
         public string Description { get; init; }
