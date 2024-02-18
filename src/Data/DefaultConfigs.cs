@@ -1,5 +1,4 @@
-﻿
-using BackMeUp.Data.Models;
+﻿using BackMeUp.Models;
 using BackMeUp.Properties;
 using System;
 using System.Collections.Generic;

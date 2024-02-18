@@ -1,4 +1,5 @@
-﻿using BackMeUp.Data.Models;
+﻿using BackMeUp.Contracts;
+using BackMeUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,15 +7,15 @@ using System.IO;
 
 namespace BackMeUp.Data.Management;
 
-internal sealed class SettingsManager
+public sealed class SettingsManager: ISettingsManager
 {
     
     private Configs Settings { get; set; }
-    internal IReadOnlyList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs.AsReadOnly();
+    public IReadOnlyList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs.AsReadOnly();
 
-    internal string StorageLocation => Settings.StorageLocation;
+    public string StorageLocation => Settings.StorageLocation;
 
-    internal Configs LoadConfigs()
+    public Configs LoadConfigs()
     {
         if (!Directory.Exists(DefaultConfigs.ConfigsFolder))
         {
@@ -34,7 +35,7 @@ internal sealed class SettingsManager
 
     }
 
-    internal void RestoreDefaultConfigs()
+    public void RestoreDefaultConfigs()
     {//TODO: move files?
         if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
             File.Exists(DefaultConfigs.ConfigsFile))
@@ -60,22 +61,20 @@ internal sealed class SettingsManager
         }
     }
 
-    internal bool AddGameSaveConfig(GameSaveConfig gameSaveConfig)
+    public bool SaveConfig(GameSaveConfig gameSaveConfig)
     {
         Settings.GameSaveConfigs.Add(gameSaveConfig);
         return Write();
     }
 
-    internal bool RemoveGameSaveConfig(GameSaveConfig gameSaveConfig)
+    public bool RemoveConfig(GameSaveConfig gameSaveConfig)
     {
         Settings.GameSaveConfigs.Remove(gameSaveConfig);
         return Write();
     }
 
     #region Constructor
-    private static readonly Lazy<SettingsManager> Lazy = new(() => new SettingsManager());
-    public static SettingsManager Instance => Lazy.Value;
-    private SettingsManager()
+    public SettingsManager()
     {
         Settings = LoadConfigs();
     }

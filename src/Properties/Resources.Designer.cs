@@ -176,5 +176,14 @@ namespace BackMeUp.Properties {
                 return ResourceManager.GetString("SekiroName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AppBackgroundRequestedTheme.
+        /// </summary>
+        internal static string ThemeSettingsKey {
+            get {
+                return ResourceManager.GetString("ThemeSettingsKey", resourceCulture);
+            }
+        }
     }
 }

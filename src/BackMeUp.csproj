@@ -9,6 +9,7 @@
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseRidGraph>true</UseRidGraph>
+    <ImplicitUsings>enable</ImplicitUsings>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -17,10 +18,10 @@
     <RepositoryUrl>https://github.com/MarceloHeredia/BackMeUp</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="UI\Components\SettingsPage\**" />
-    <EmbeddedResource Remove="UI\Components\SettingsPage\**" />
-    <None Remove="UI\Components\SettingsPage\**" />
-    <Page Remove="UI\Components\SettingsPage\**" />
+    <Compile Remove="Components\SettingsPage\**" />
+    <EmbeddedResource Remove="Components\SettingsPage\**" />
+    <None Remove="Components\SettingsPage\**" />
+    <Page Remove="Components\SettingsPage\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Assets\Images\bonf.png" />
@@ -42,22 +43,25 @@
   <ItemGroup>
     <None Remove="Assets\Icons\bonfire.ico" />
     <None Remove="Themes\ThemeResources.xaml" />
-    <None Remove="UI\AppTitleBar.xaml" />
-    <None Remove="UI\Components\HelpInfoBadge.xaml" />
-    <None Remove="UI\Components\SettingsGamesControl.xaml" />
-    <None Remove="UI\Components\SettingsGeneralControl.xaml" />
-    <None Remove="UI\Components\SettingsHelpControl.xaml" />
-    <None Remove="UI\Pages\BackupsPage.xaml" />
-    <None Remove="UI\Pages\CreateBackupPage.xaml" />
-    <None Remove="UI\Pages\HomePage.xaml" />
-    <None Remove="UI\Pages\SettingsPage.xaml" />
+    <None Remove="Components\HelpInfoBadge.xaml" />
+    <None Remove="Components\SettingsGamesControl.xaml" />
+    <None Remove="Components\SettingsGeneralControl.xaml" />
+    <None Remove="Components\SettingsHelpControl.xaml" />
+    <None Remove="Pages\BackupsPage.xaml" />
+    <None Remove="Pages\CreateBackupPage.xaml" />
+    <None Remove="Pages\HomePage.xaml" />
+    <None Remove="Pages\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Themes\Generic.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240124002-experimental2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-preview.1.24080.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0-preview.1.24080.9" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240205001-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26031-preview" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.3.3" />
@@ -68,6 +72,7 @@
     <VersionSuffix></VersionSuffix>
     <Version>$(VersionPrefix)$(VersionSuffix)</Version>
     <AssemblyVersion>$(Version)</AssemblyVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
@@ -78,9 +83,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\DB\" />
-    <Folder Include="UI\Controls\" />
-    <Folder Include="Utils\Controls\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -117,48 +120,9 @@
     <None Update="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <Page Update="UI\Components\HelpInfoBadge.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Components\SettingsGeneralControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Components\SettingsGamesControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Components\SettingsHelpControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Components\CreateGameConfigDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Components\ResetToDefaultControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UI\Pages\BackupsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UI\Pages\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UI\Pages\CreateBackupPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Theme\ThemeResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UI\AppTitleBar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -172,6 +136,6 @@
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
   <ItemGroup>
-    <PRIResource Remove="UI\Components\SettingsPage\**" />
+    <PRIResource Remove="Components\SettingsPage\**" />
   </ItemGroup>
 </Project>

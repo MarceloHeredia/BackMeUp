@@ -1,41 +1,89 @@
-﻿using System;
+﻿using BackMeUp.Activation;
+using BackMeUp.Contracts;
+using BackMeUp.Contracts.Services;
+using BackMeUp.Services;
+using BackMeUp.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using System.Diagnostics;
 using WinRT.Interop;
-using WinUIEx;
 
-namespace BackMeUp
+namespace BackMeUp;
+
+public partial class App: Application, IAppContext
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
-    public partial class App
+    public IHost Host { get; private set; }
+    public static T GetService<T>()
+        where T : class
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
-        public App()
+        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
-            this.InitializeComponent();
+            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
 
-        public static MainWindow MainWindow { get; private set; }
-        public static IntPtr MainWindowHandle => WindowNative.GetWindowHandle(MainWindow);
+        return service;
+    }
 
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
-        {
-            MainWindow = new MainWindow();
+    public IntPtr MainWindowHandle => WindowNative.GetWindowHandle(MainWindow);
 
-            MainWindow.SetWindowSize(1200, 800);
-            MainWindow.CenterOnScreen();
+    public static WindowEx MainWindow { get; } = new MainWindow();
+    public static UIElement? AppTitlebar { get; set; }
+    public App()
+    {
+        InitializeComponent();
 
-            MainWindow.Activate();
+        ConfigureHost();
 
-        }
+        UnhandledException += App_UnhandledException;
+    }
 
+    /// <summary>
+    /// Invoked when the application is launched.
+    /// </summary>
+    /// <param name="args">Details about the launch request and process.</param>
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
+    {
+
+        //MainWindow.SetWindowSize(1200, 800);
+        //MainWindow.CenterOnScreen();
+        //MainWindow.Activate();
+
+        base.OnLaunched(args);
+        await GetService<IActivationService>().ActivateAsync(args);
+
+    }
+
+    private void ConfigureHost()
+    {
+        Host = Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .ConfigureServices((context, services) =>
+            {
+                // Activation Handlers
+                services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+
+                // Services
+
+
+                services.AddSingleton<IPageService, PageService>();
+                services.AddSingleton<INavigationService, NavigationService>();
+
+                // Views and ViewModels
+                services.AddTransient<HomeViewModel>();
+                services.AddTransient<MainPage>();
+
+                // Configuration
+
+            })
+            .Build();
+    }
+
+    private static void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+    {
+        // TODO: Log and handle exceptions as appropriate.
+        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        Debug.WriteLine(e.Exception);
     }
 }

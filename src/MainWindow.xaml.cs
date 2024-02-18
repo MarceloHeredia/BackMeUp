@@ -1,53 +1,51 @@
-using BackMeUp.Data.Models;
+using BackMeUp.Models;
+using BackMeUp.Pages;
 using BackMeUp.Properties;
-using BackMeUp.UI.Pages;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
 
-namespace BackMeUp
+namespace BackMeUp;
+
+public sealed partial class MainWindow: WindowEx
 {
-    public sealed partial class MainWindow
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+        ConfigureTitleBar();
+
+        ExtendsContentIntoTitleBar = true;
+        SetTitleBar(AppTitleBar);
+    }
+
+    private void ConfigureTitleBar()
+    {
+        if (!AppWindowTitleBar.IsCustomizationSupported()) return;
+
+        Title = Resources.AppTitle;
+        AppWindow.SetIcon(Resources.AppIcon);
+    }
+
+    private void NavigationControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    {
+        if (args.IsSettingsSelected)
         {
-            InitializeComponent();
-            ConfigureTitleBar();
-
-
-            ExtendsContentIntoTitleBar = true;
-            SetTitleBar(AppTitleBar);
+            ContentFrame.Navigate(typeof(SettingsPage));
+            return;
         }
+        var item = args.SelectedItem as NavigationViewItem;
+        var tag = (NavigationItemOptions)item!.Tag;
 
-        private void ConfigureTitleBar()
+        switch (tag)
         {
-            if (!AppWindowTitleBar.IsCustomizationSupported()) return;
-
-            Title = Resources.AppTitle;
-            AppWindow.SetIcon(Resources.AppIcon);
-        }
-
-        private void NavigationControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.IsSettingsSelected)
-            {
-                ContentFrame.Navigate(typeof(SettingsPage));
-                return;
-            }
-            var item = args.SelectedItem as NavigationViewItem;
-            var tag = (NavigationItemOptions)item!.Tag;
-
-            switch (tag)
-            {
-                case NavigationItemOptions.Home:
-                    ContentFrame.Navigate(typeof(HomePage));
-                    break;
-                case NavigationItemOptions.List:
-                    ContentFrame.Navigate(typeof(BackupsPage));
-                    break;
-                case NavigationItemOptions.Create:
-                    ContentFrame.Navigate(typeof(CreateBackupPage));
-                    break;
-            }
+            case NavigationItemOptions.Home:
+                ContentFrame.Navigate(typeof(HomePage));
+                break;
+            case NavigationItemOptions.List:
+                ContentFrame.Navigate(typeof(BackupsPage));
+                break;
+            case NavigationItemOptions.Create:
+                ContentFrame.Navigate(typeof(CreateBackupPage));
+                break;
         }
     }
 }
