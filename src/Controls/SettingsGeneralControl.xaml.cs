@@ -1,22 +1,18 @@
 using BackMeUp.Contracts;
-using BackMeUp.Data.Management;
+using BackMeUp.Contracts.Services;
 using Microsoft.UI.Xaml;
-using System;
-using System.IO;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 
-namespace BackMeUp.UI.Controls
+namespace BackMeUp.Controls
 {
     public sealed partial class SettingsGeneralControl
     {
         private readonly ISettingsManager _settingsManager;
-        private readonly IAppContext _appContext;
-        public SettingsGeneralControl(IAppContext appContext, ISettingsManager settingsManager)
+        private readonly IApplicationService _applicationService;
+        public SettingsGeneralControl()
         {
             this.InitializeComponent();
-            _appContext = appContext;
-            _settingsManager = settingsManager;
         }
         private async void BackupLocationPicker_OnClick(object sender, RoutedEventArgs e)
         {
@@ -27,7 +23,7 @@ namespace BackMeUp.UI.Controls
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
             };
             folderPicker.FileTypeFilter.Add("*");
-            var hWnd = _appContext.MainWindowHandle;
+            var hWnd = _applicationService.MainWindowHandle;
 
             WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hWnd);
             var folder = await folderPicker.PickSingleFolderAsync();

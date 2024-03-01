@@ -10,40 +10,40 @@ namespace BackMeUp.Data.Management;
 public sealed class SettingsManager: ISettingsManager
 {
     
-    private Configs Settings { get; set; }
+    private Settings Settings { get; set; }
     public IReadOnlyList<GameSaveConfig> GameSaveConfigs => Settings.GameSaveConfigs.AsReadOnly();
 
     public string StorageLocation => Settings.StorageLocation;
 
-    public Configs LoadConfigs()
+    public Settings LoadConfigs()
     {
-        if (!Directory.Exists(DefaultConfigs.ConfigsFolder))
+        if (!Directory.Exists(DefaultSettings.ConfigsFolder))
         {
-            Directory.CreateDirectory(DefaultConfigs.ConfigsFolder);
+            Directory.CreateDirectory(DefaultSettings.ConfigsFolder);
         }
 
-        if (!File.Exists(DefaultConfigs.ConfigsFile))
+        if (!File.Exists(DefaultSettings.ConfigsFile))
         {
             // TODO: Log error or something before restoring
             RestoreDefaultConfigs();
-            return DefaultConfigs.DefaultConfigsData;
+            return DefaultSettings.DefaultSettingsData;
         }
 
-        var json = File.ReadAllText(DefaultConfigs.ConfigsFile);
-        var configs = JsonConvert.DeserializeObject<Configs>(json);
+        var json = File.ReadAllText(DefaultSettings.ConfigsFile);
+        var configs = JsonConvert.DeserializeObject<Settings>(json);
         return configs;
 
     }
 
     public void RestoreDefaultConfigs()
     {//TODO: move files?
-        if (Directory.Exists(DefaultConfigs.ConfigsFolder) &&
-            File.Exists(DefaultConfigs.ConfigsFile))
+        if (Directory.Exists(DefaultSettings.ConfigsFolder) &&
+            File.Exists(DefaultSettings.ConfigsFile))
         {
-            File.Delete(DefaultConfigs.ConfigsFile);
+            File.Delete(DefaultSettings.ConfigsFile);
         }
 
-        Settings = DefaultConfigs.DefaultConfigsData;
+        Settings = DefaultSettings.DefaultSettingsData;
         Write();
     }
 
@@ -52,7 +52,7 @@ public sealed class SettingsManager: ISettingsManager
         try
         {
             var jsonConfigs = JsonConvert.SerializeObject(Settings, Formatting.Indented);
-            File.WriteAllText(DefaultConfigs.ConfigsFile, jsonConfigs);
+            File.WriteAllText(DefaultSettings.ConfigsFile, jsonConfigs);
             return true;
         }
         catch (Exception) // TODO: Log error

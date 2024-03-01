@@ -1,18 +1,15 @@
 ﻿using BackMeUp.Models;
 using BackMeUp.Properties;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace BackMeUp.Data
 {
-    internal static class DefaultConfigs
+    internal static class DefaultSettings
     {
         internal static string ConfigsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Resources.AppFolder);
-        internal static string ConfigsFile => Path.Combine(ConfigsFolder, Resources.ConfigsFile);
+        internal static string ConfigsFile => Path.Combine(ConfigsFolder, Resources.LocalSettingsFile);
         internal static string BackupFolder => Path.Combine(ConfigsFolder, Resources.BackupFolder);
 
-        internal static Configs DefaultConfigsData => new()
+        internal static Settings DefaultSettingsData => new()
         {
             StorageLocation = BackupFolder,
             GameSaveConfigs = KnownSaveGameLocations,

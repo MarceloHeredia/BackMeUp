@@ -1,22 +1,22 @@
 <UserControl
-    x:Class="BackMeUp.UI.Controls.SettingsGeneralControl"
+    x:Class="BackMeUp.Controls.SettingsGeneralControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:components="using:BackMeUp.UI.Components"
-    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
+    xmlns:components="using:BackMeUp.Components"
+    xmlns:helpers="using:BackMeUp.Helpers"
     mc:Ignorable="d">
     <StackPanel Orientation="Vertical" Spacing="10" Margin="0, 20, 0, 0">
         <components:GroupPanel>
-            <TextBlock Text="{extMethods:StringResource Key=SettingsGeneralControlBackupLocation}" FontSize="20"/>
-            <components:HelpInfoBadge HelpInfoText="{extMethods:StringResource Key=SettingsGeneralControlTooltip}"/>
+            <TextBlock Text="{helpers:StringResource Key=SettingsGeneralControlBackupLocation}" FontSize="20"/>
+            <components:HelpInfoBadge HelpInfoText="{helpers:StringResource Key=SettingsGeneralControlTooltip}"/>
         </components:GroupPanel>
         <TextBlock x:Name="PickFolderOutputTextBlock" Text="{x:Bind _settingsManager.StorageLocation}" TextWrapping="Wrap"/>
         <components:GroupPanel>
-            <Button Content="{extMethods:StringResource Key=SettingsGeneralControlChangeBackupLocation}"
+            <Button Content="{helpers:StringResource Key=SettingsGeneralControlChangeBackupLocation}"
                     Click="BackupLocationPicker_OnClick"/>
-            <Button Content="{extMethods:StringResource Key=SettingsGeneralControlResetToDefaultBackupLocation}"
+            <Button Content="{helpers:StringResource Key=SettingsGeneralControlResetToDefaultBackupLocation}"
                     Click="RestoreDefaultBackupLocation_OnClick"/>
         </components:GroupPanel>
         <NavigationViewItemSeparator/>

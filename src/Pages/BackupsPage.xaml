@@ -4,8 +4,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
-    xmlns:models="using:BackMeUp.Data.Models"
+    xmlns:helpers="using:BackMeUp.Helpers"
+    xmlns:models="using:BackMeUp.Models"
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="GameListViewTemplate" x:DataType="models:SaveBackupViewItem">
@@ -62,10 +62,10 @@
               Background="{ThemeResource AppCardDefault}">
             <!-- The textboxes used for filtering are shown below: -->
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock TextAlignment="Center" Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}" Text="{extMethods:StringResource Key=BackupsPageFilter}"/>
-                <TextBox x:Name="SaveNameFilter" Width="150" Header="{extMethods:StringResource Key=BackupsPageFilterSaveName}" Margin="8"
+                <TextBlock TextAlignment="Center" Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}" Text="{helpers:StringResource Key=BackupsPageFilter}"/>
+                <TextBox x:Name="SaveNameFilter" Width="150" Header="{helpers:StringResource Key=BackupsPageFilterSaveName}" Margin="8"
                          HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
-                <TextBox x:Name="GameNameFilter" Width="150" Header="{extMethods:StringResource Key=BackupsPageFilterGameName}" Margin="8"
+                <TextBox x:Name="GameNameFilter" Width="150" Header="{helpers:StringResource Key=BackupsPageFilterGameName}" Margin="8"
                          HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
             </StackPanel>
         </Grid>

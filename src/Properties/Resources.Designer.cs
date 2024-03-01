@@ -79,15 +79,6 @@ namespace BackMeUp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BackMeUp!.
-        /// </summary>
-        internal static string AppTitle {
-            get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to /Assets/Icons/BackMeUpLogo.ico.
         /// </summary>
         internal static string AppTitleBarIcon {
@@ -102,15 +93,6 @@ namespace BackMeUp.Properties {
         internal static string BackupFolder {
             get {
                 return ResourceManager.GetString("BackupFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to configs.json.
-        /// </summary>
-        internal static string ConfigsFile {
-            get {
-                return ResourceManager.GetString("ConfigsFile", resourceCulture);
             }
         }
         
@@ -165,6 +147,15 @@ namespace BackMeUp.Properties {
         internal static string EldenRingName {
             get {
                 return ResourceManager.GetString("EldenRingName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LocalSettings.json.
+        /// </summary>
+        internal static string LocalSettingsFile {
+            get {
+                return ResourceManager.GetString("LocalSettingsFile", resourceCulture);
             }
         }
         

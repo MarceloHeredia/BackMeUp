@@ -9,11 +9,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 
-namespace BackMeUp.UI.Controls
+namespace BackMeUp.Controls
 {
     public sealed partial class SettingsGamesControl
     {
-        private readonly SettingsManager _settingsManager = SettingsManager.Instance;
+        private readonly SettingsManager _settingsManager; // =  TODO SettingsManager.Instance;
         private readonly ObservableCollection<GameSaveConfigViewItem> _gameSaveConfigs;
         private readonly StandardUICommand _deleteCommand;
         //TODO: Investigate if Edit button is needed
@@ -67,17 +67,17 @@ namespace BackMeUp.UI.Controls
             }
         }
         private async void AddSaveSettings_OnClick(object sender, RoutedEventArgs e)
-        {
-            CreateGameConfigDialog dialog = new()
-            {
-                XamlRoot = this.Content.XamlRoot,
-            };
-            await dialog.ShowAsync();
+        {//TODO
+            //CreateGameConfigDialog dialog = new()
+            //{
+            //    XamlRoot = this.Content.XamlRoot,
+            //};
+            //await dialog.ShowAsync();
 
-            if (dialog.Result == CreateGameConfigResult.Created)
-            {
-                RefreshListViewItems();
-            }
+            //if (dialog.Result == CreateGameConfigResult.Created)
+            //{
+            //    RefreshListViewItems();
+            //}
         }
 
         #endregion

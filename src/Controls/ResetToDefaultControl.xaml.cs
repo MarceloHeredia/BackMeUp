@@ -2,7 +2,7 @@ using BackMeUp.Data.Management;
 using Microsoft.UI.Xaml;
 
 
-namespace BackMeUp.UI.Controls
+namespace BackMeUp.Controls
 {
     public delegate void ResetEventHandler(ResetResult result);
     public enum ResetResult
@@ -23,7 +23,7 @@ namespace BackMeUp.UI.Controls
 
         private void ResetToDefault_Click(object sender, RoutedEventArgs e)
         {
-            SettingsManager.Instance.RestoreDefaultConfigs();
+            //SettingsManager.Instance.RestoreDefaultConfigs(); TODO
             ResetButtonClick?.Invoke(ResetResult.Success);
             ResetToDefaultFlyout.Hide();
             ResetToDefaultFlyout2.Hide();

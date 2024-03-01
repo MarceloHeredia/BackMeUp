@@ -9,12 +9,17 @@ using System.Diagnostics.CodeAnalysis;
 namespace BackMeUp.Services;
 
 // https://github.com/microsoft/TemplateStudio/blob/main/docs/WinUI/navigation.md
-public class NavigationService(IPageService pageService) : INavigationService
+/// <summary>
+/// This NavigationService is based on the Template Studio. It requires the pages to not have any constructor parameters but gives a better support to GoBack in the navigation.
+/// </summary>
+/// <param name="applicationService">ApplicationService gives the context of the MainWindow</param>
+/// <param name="pageService">PageService is used to navigate from Page to Page</param>
+public class NavigationService(IApplicationService applicationService, IPageService pageService) : INavigationService
 {
     private object? _lastParameterUsed;
     private Frame? _frame;
 
-    public event NavigatedEventHandler? Navigated;
+    public event CustomNavigatedEventHandler? Navigated;
 
     public Frame? Frame
     {
@@ -22,7 +27,7 @@ public class NavigationService(IPageService pageService) : INavigationService
         {
             if (_frame is null)
             {
-                _frame = App.MainWindow.Content as Frame;
+                _frame = applicationService.MainWindow.Content as Frame;
                 RegisterFrameEvents();
             }
 
@@ -65,6 +70,7 @@ public class NavigationService(IPageService pageService) : INavigationService
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
+
             var navigated = _frame.Navigate(pageType, parameter);
             if (navigated)
             {
@@ -99,7 +105,7 @@ public class NavigationService(IPageService pageService) : INavigationService
                 navigationAware.OnNavigatedTo(e.Parameter);
             }
 
-            Navigated?.Invoke(sender, e);
+            Navigated?.Invoke(sender, new(e.SourcePageType));
         }
     }
 

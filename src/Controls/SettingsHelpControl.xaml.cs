@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace BackMeUp.UI.Controls
+namespace BackMeUp.Controls
 {
     public sealed partial class SettingsHelpControl
     {

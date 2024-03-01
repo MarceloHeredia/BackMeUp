@@ -1,10 +1,10 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
+﻿using BackMeUp.Helpers;
+using Microsoft.UI.Xaml.Controls;
 
 namespace BackMeUp.Contracts.Services;
 public interface INavigationService
 {
-    event NavigatedEventHandler Navigated;
+    event CustomNavigatedEventHandler Navigated;
 
     bool CanGoBack { get; }
     Frame? Frame { get; set; }

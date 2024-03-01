@@ -4,18 +4,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:BackMeUp.UI.Controls"
-    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
+    xmlns:controls="using:BackMeUp.Controls"
+    xmlns:helpers="using:BackMeUp.Helpers"
     mc:Ignorable="d">
-    <Pivot>
-        <PivotItem Header="{extMethods:StringResource Key=SettingsPageGeneral}">
+    <Page.Resources>
+
+    </Page.Resources>
+    <StackPanel x:Name="ContentArea">
+    </StackPanel>
+
+    <!--<Pivot>
+        <PivotItem Header="{helpers:StringResource Key=SettingsPageGeneral}">
             <controls:SettingsGeneralControl/>
         </PivotItem>
-        <PivotItem Header="{extMethods:StringResource Key=SettingsPageGames}">
+        <PivotItem Header="{helpers:StringResource Key=SettingsPageGames}">
             <controls:SettingsGamesControl/>
         </PivotItem>
-        <PivotItem Header="{extMethods:StringResource Key=SettingsPageHelp}">
+        <PivotItem Header="{helpers:StringResource Key=SettingsPageHelp}">
             <controls:SettingsHelpControl/>
         </PivotItem>
-    </Pivot>
+    </Pivot>-->
 </Page>

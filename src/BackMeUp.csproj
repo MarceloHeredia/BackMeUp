@@ -16,44 +16,20 @@
     <ApplicationIcon>Assets\Icons\bonfire.ico</ApplicationIcon>
     <PackageIcon>BackMeUpLogo2.0.png</PackageIcon>
     <RepositoryUrl>https://github.com/MarceloHeredia/BackMeUp</RepositoryUrl>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.1.15</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <Version>$(VersionPrefix)$(VersionSuffix)</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Remove="Components\SettingsPage\**" />
-    <EmbeddedResource Remove="Components\SettingsPage\**" />
-    <None Remove="Components\SettingsPage\**" />
-    <Page Remove="Components\SettingsPage\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Assets\Images\bonf.png" />
-    <Content Remove="Assets\Images\dancin.gif" />
-    <Content Remove="Assets\Images\lamp.gif" />
-    <Content Remove="Assets\Images\mimic.png" />
-    <Content Remove="Assets\Images\solaire.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-100.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-125.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-150.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-200.png" />
-    <Content Remove="Assets\Logos\BadgeLogo.scale-400.png" />
-    <Content Remove="Assets\Logos\StoreLogo.scale-100.png" />
-    <Content Remove="Assets\Logos\StoreLogo.scale-125.png" />
-    <Content Remove="Assets\Logos\StoreLogo.scale-150.png" />
-    <Content Remove="Assets\Logos\StoreLogo.scale-200.png" />
-    <Content Remove="Assets\Logos\StoreLogo.scale-400.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Assets\Icons\bonfire.ico" />
-    <None Remove="Themes\ThemeResources.xaml" />
-    <None Remove="Components\HelpInfoBadge.xaml" />
-    <None Remove="Components\SettingsGamesControl.xaml" />
-    <None Remove="Components\SettingsGeneralControl.xaml" />
-    <None Remove="Components\SettingsHelpControl.xaml" />
-    <None Remove="Pages\BackupsPage.xaml" />
-    <None Remove="Pages\CreateBackupPage.xaml" />
-    <None Remove="Pages\HomePage.xaml" />
-    <None Remove="Pages\SettingsPage.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="Themes\Generic.xaml" />
+    <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,27 +39,9 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0-preview.1.24080.9" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240205001-preview1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26031-preview" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.3.3" />
-    <Manifest Include="$(ApplicationManifest)" />
-  </ItemGroup>
-  <PropertyGroup>
-    <VersionPrefix>0.1.15</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
-    <Version>$(VersionPrefix)$(VersionSuffix)</Version>
-    <AssemblyVersion>$(Version)</AssemblyVersion>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <!-- 
-    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
-    Tools extension to be activated for this project even if the Windows App SDK Nuget
-    package has not yet been restored.
-  -->
-  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Behaviors\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -91,40 +49,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="Assets\Icons\BackMeUpLogo.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\Icons\bonfire.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Assets\Icons\BackMeUpLogo.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Update="Assets\Images\dancin.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Images\lamp.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Theme\ThemeResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!-- 
@@ -135,7 +59,12 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
-  <ItemGroup>
-    <PRIResource Remove="Components\SettingsPage\**" />
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
   </ItemGroup>
 </Project>

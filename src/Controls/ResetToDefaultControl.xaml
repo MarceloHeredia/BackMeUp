@@ -1,23 +1,23 @@
 <UserControl
-    x:Class="BackMeUp.UI.Controls.ResetToDefaultControl"
+    x:Class="BackMeUp.Controls.ResetToDefaultControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:extMethods="using:BackMeUp.Utils.ExtensionMethods"
+    xmlns:helpers="using:BackMeUp.Helpers"
     mc:Ignorable="d">
-    <Button Content="{extMethods:StringResource Key=ResetToDefaultControlReset}">
+    <Button Content="{helpers:StringResource Key=ResetToDefaultControlReset}">
         <Button.Flyout>
             <Flyout x:Name="ResetToDefaultFlyout">
                 <StackPanel>
-                    <TextBlock Text="{extMethods:StringResource Key=ResetToDefaultControlFlyoutLine1}"/>
-                    <TextBlock Text="{extMethods:StringResource Key=ResetToDefaultControlFlyoutLine2}"/>
-                    <Button Margin="0, 4, 0, 0" Content="{extMethods:StringResource Key=ResetToDefaultControlConfirm}">
+                    <TextBlock Text="{helpers:StringResource Key=ResetToDefaultControlFlyoutLine1}"/>
+                    <TextBlock Text="{helpers:StringResource Key=ResetToDefaultControlFlyoutLine2}"/>
+                    <Button Margin="0, 4, 0, 0" Content="{helpers:StringResource Key=ResetToDefaultControlConfirm}">
                         <Button.Flyout>
                             <Flyout x:Name="ResetToDefaultFlyout2" Closed="ResetToDefaultFlyout2_OnClosed">
                                 <StackPanel Spacing="4" Width="200">
-                                    <TextBlock Text="{extMethods:StringResource Key=ResetToDefaultControlFlyout2}" TextWrapping="Wrap"/>
-                                    <Button Click="ResetToDefault_Click" Content="{extMethods:StringResource Key=ResetToDefaultControlConfirm2}" />
+                                    <TextBlock Text="{helpers:StringResource Key=ResetToDefaultControlFlyout2}" TextWrapping="Wrap"/>
+                                    <Button Click="ResetToDefault_Click" Content="{helpers:StringResource Key=ResetToDefaultControlConfirm2}" />
                                 </StackPanel>
                             </Flyout>
                         </Button.Flyout>

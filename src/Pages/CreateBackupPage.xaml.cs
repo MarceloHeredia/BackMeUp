@@ -6,13 +6,13 @@ namespace BackMeUp.Pages;
 
 public sealed partial class CreateBackupPage
 {
-    private readonly Configs _configs = SettingsManager.Instance.LoadConfigs();
+    private readonly Settings _settings; //TODO = SettingsManager.Instance.LoadConfigs();
     private readonly List<string> _gameList;
     public CreateBackupPage()
     {
         this.InitializeComponent();
 
-        _gameList = _configs.GameSaveConfigs.Select(x => x.Game).ToList();
+        _gameList = _settings.GameSaveConfigs.Select(x => x.Game).ToList();
     }
 
     private void CreateBackup_Click(object sender, RoutedEventArgs e)

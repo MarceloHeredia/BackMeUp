@@ -1,7 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
-using System;
 
-namespace BackMeUp.UI.Components
+namespace BackMeUp.Components
 {
     public sealed partial class HelpInfoBadge : UserControl
     {

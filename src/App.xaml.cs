@@ -1,6 +1,7 @@
 ﻿using BackMeUp.Activation;
-using BackMeUp.Contracts;
 using BackMeUp.Contracts.Services;
+using BackMeUp.Helpers;
+using BackMeUp.Pages;
 using BackMeUp.Services;
 using BackMeUp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +12,10 @@ using WinRT.Interop;
 
 namespace BackMeUp;
 
-public partial class App: Application, IAppContext
+public partial class App
 {
-    public IHost Host { get; private set; }
-    public static T GetService<T>()
-        where T : class
+    public IHost Host { get; }
+    private static T GetService<T>() where T : class
     {
         if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
@@ -24,16 +24,53 @@ public partial class App: Application, IAppContext
 
         return service;
     }
+    private static WindowEx MainWindow { get; } = new MainWindow();
 
-    public IntPtr MainWindowHandle => WindowNative.GetWindowHandle(MainWindow);
+    private static IntPtr MainWindowHandle => WindowNative.GetWindowHandle(MainWindow);
 
-    public static WindowEx MainWindow { get; } = new MainWindow();
-    public static UIElement? AppTitlebar { get; set; }
     public App()
     {
         InitializeComponent();
 
-        ConfigureHost();
+        Host = Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .ConfigureServices((context, services) =>
+            {
+                // Activation Handlers
+                services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+
+                // Services
+                services.AddSingleton<IApplicationService>( sp => new ApplicationService(MainWindow, MainWindowHandle, sp));
+
+                services.AddSingleton<IFileService, FileService>();
+                services.AddSingleton<IActivationService, ActivationService>();
+
+                services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+                services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+
+                services.AddSingleton<IPageService, PageService>();
+
+                //This implementation requires the pages to not have any constructor parameters but gives a better support to GoBack in the navigation
+                //services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<INavigationService, ContentNavigationService>();
+
+                services.AddSingleton<INavigationViewService, NavigationViewService>();
+
+                // Views and ViewModels
+                services.AddTransient<ShellViewModel>();
+                services.AddTransient<ShellPage>();
+
+                services.AddTransient<HomeViewModel>();
+                services.AddTransient<HomePage>();
+
+                services.AddTransient<SettingsViewModel>();
+                services.AddTransient<SettingsPage>();
+
+                // Configuration
+
+            })
+            .Build();
 
         UnhandledException += App_UnhandledException;
     }
@@ -52,32 +89,6 @@ public partial class App: Application, IAppContext
         base.OnLaunched(args);
         await GetService<IActivationService>().ActivateAsync(args);
 
-    }
-
-    private void ConfigureHost()
-    {
-        Host = Microsoft.Extensions.Hosting.Host
-            .CreateDefaultBuilder()
-            .UseContentRoot(AppContext.BaseDirectory)
-            .ConfigureServices((context, services) =>
-            {
-                // Activation Handlers
-                services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
-
-                // Services
-
-
-                services.AddSingleton<IPageService, PageService>();
-                services.AddSingleton<INavigationService, NavigationService>();
-
-                // Views and ViewModels
-                services.AddTransient<HomeViewModel>();
-                services.AddTransient<MainPage>();
-
-                // Configuration
-
-            })
-            .Build();
     }
 
     private static void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)

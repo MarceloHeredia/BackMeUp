@@ -1,35 +1,34 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
-using BackMeUp.Activation;
+﻿using BackMeUp.Activation;
 using BackMeUp.Contracts.Services;
 using BackMeUp.Pages;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace BackMeUp.Services
 {
     public class ActivationService(
+        IApplicationService applicationService,
+        // ReSharper disable once SuggestBaseTypeForParameterInConstructor -> This change breaks the code completely don't do it
         ActivationHandler<LaunchActivatedEventArgs> defaultHandler,
         IEnumerable<IActivationHandler> activationHandlers,
         IThemeSelectorService themeSelectorService)
         : IActivationService
     {
-        private UIElement? _shell = null;
-
         public async Task ActivateAsync(object activationArgs)
         {
             // Execute tasks before activation.
             await InitializeAsync();
 
             // Set the MainWindow Content.
-            if (App.MainWindow.Content is null)
+            if (applicationService.MainWindow.Content is null)
             {
-                _shell = App.GetService<ShellPage>();
-                App.MainWindow.Content = _shell ?? new Frame();
+                UIElement? shell = applicationService.GetService<ShellPage>();
+                applicationService.MainWindow.Content = shell ?? new Frame();
             }
 
             await HandleActivationAsync(activationArgs);
 
-            App.MainWindow.Activate();
+            applicationService.MainWindow.Activate();
 
             await StartupAsync();
         }

@@ -13,7 +13,7 @@ public interface ISettingsManager
     {
         get;
     }
-    public Configs LoadConfigs();
+    public Settings LoadConfigs();
     public void RestoreDefaultConfigs();
     public bool SaveConfig(GameSaveConfig config);
     public bool RemoveConfig(GameSaveConfig config);

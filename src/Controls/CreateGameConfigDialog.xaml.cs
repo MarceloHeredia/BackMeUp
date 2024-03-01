@@ -1,13 +1,13 @@
+using BackMeUp.Contracts.Services;
 using BackMeUp.Data.Management;
-using BackMeUp.Data.Models;
+using BackMeUp.Models;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 
 
-namespace BackMeUp.UI.Controls
+namespace BackMeUp.Controls
 {
 
     public enum CreateGameConfigResult
@@ -19,9 +19,11 @@ namespace BackMeUp.UI.Controls
 
     public sealed partial class CreateGameConfigDialog
     {
+        private readonly IApplicationService _applicationService;
         public CreateGameConfigResult Result { get; private set; } = CreateGameConfigResult.NoResult;
-        public CreateGameConfigDialog()
+        public CreateGameConfigDialog(IApplicationService applicationService)
         {
+            _applicationService = applicationService;
             this.InitializeComponent();
         }
 
@@ -59,11 +61,12 @@ namespace BackMeUp.UI.Controls
 
             var deferral = args.GetDeferral();
 
-            SettingsManager.Instance.AddGameSaveConfig(new GameSaveConfig
-            {
-                Game = GameNameTextBox.Text,
-                SavePath = PickFolderOutputTextBlock.Text
-            });
+            //TODO:
+            //SettingsManager.Instance.AddGameSaveConfig(new GameSaveConfig
+            //{
+            //    Game = GameNameTextBox.Text,
+            //    SavePath = PickFolderOutputTextBlock.Text
+            //});
 
             Result = CreateGameConfigResult.Created;
             deferral.Complete();
@@ -83,7 +86,7 @@ namespace BackMeUp.UI.Controls
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
             };
             folderPicker.FileTypeFilter.Add("*");
-            var hWnd = App.MainWindowHandle;
+            var hWnd = _applicationService.MainWindowHandle;
 
             WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hWnd);
             var folder = await folderPicker.PickSingleFolderAsync();

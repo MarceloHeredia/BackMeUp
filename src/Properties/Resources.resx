@@ -123,17 +123,11 @@
   <data name="AppIcon" xml:space="preserve">
     <value>Assets\Icons\BackMeUpLogo.ico</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>BackMeUp!</value>
-  </data>
   <data name="AppTitleBarIcon" xml:space="preserve">
     <value>/Assets/Icons/BackMeUpLogo.ico</value>
   </data>
   <data name="BackupFolder" xml:space="preserve">
     <value>Backups</value>
-  </data>
-  <data name="ConfigsFile" xml:space="preserve">
-    <value>configs.json</value>
   </data>
   <data name="ContactUrl" xml:space="preserve">
     <value>https://www.linkedin.com/in/herediamarcelo/</value>
@@ -152,6 +146,9 @@
   </data>
   <data name="EldenRingName" xml:space="preserve">
     <value>Dont Know Yet</value>
+  </data>
+  <data name="LocalSettingsFile" xml:space="preserve">
+    <value>LocalSettings.json</value>
   </data>
   <data name="SekiroName" xml:space="preserve">
     <value>Sekiro</value>
