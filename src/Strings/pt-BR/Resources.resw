@@ -243,8 +243,23 @@
   <data name="SettingsPageGeneral" xml:space="preserve">
     <value>Geral</value>
   </data>
+  <data name="SettingsPageHeaderPersonalization" xml:space="preserve">
+    <value>Personalização</value>
+  </data>
   <data name="SettingsPageHelp" xml:space="preserve">
     <value>Ajuda</value>
+  </data>
+  <data name="SettingsPageTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPageThemeDark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="SettingsPageThemeDefault" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="SettingsPageThemeLight" xml:space="preserve">
+    <value>Claro</value>
   </data>
   <data name="SettingsPageVersion" xml:space="preserve">
     <value>Versão</value>

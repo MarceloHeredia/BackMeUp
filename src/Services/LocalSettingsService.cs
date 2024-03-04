@@ -1,6 +1,9 @@
 ﻿using BackMeUp.Contracts.Services;
-using BackMeUp.Helpers;
+using BackMeUp.Data;
+using BackMeUp.Models;
 using BackMeUp.Properties;
+using System.Linq.Expressions;
+using System.Reflection;
 using Windows.Storage;
 
 namespace BackMeUp.Services
@@ -10,25 +13,26 @@ namespace BackMeUp.Services
         private static readonly string ApplicationDataFolder = Path.Combine(ApplicationData.Current.LocalFolder.Path, Resources.AppFolder);
         private static readonly string LocalSettingsFile = Resources.LocalSettingsFile;
 
-        private IDictionary<string, object> _settings;
+        private Settings _settings;
         private bool _isInitialized;
 
-        public async Task<T?> ReadSettingAsync<T>(string key)
+        public async Task<T?> ReadSettingAsync<T>(Expression<Func<Settings, T>> selector)
         {
             await InitializeAsync();
 
-            if (_settings.TryGetValue(key, out var obj))
-            {
-                return await Json.ToObjectAsync<T>((string)obj);
-            }
-            return default;
+            var compiledSelector = selector.Compile();
+            return compiledSelector(_settings);
         }
 
-        public async Task SaveSettingAsync<T>(string key, T value)
+        public async Task SaveSettingAsync<T>(Expression<Func<Settings, T>> selector, T value)
         {
             await InitializeAsync();
 
-            _settings[key] = await Json.StringifyAsync(value!);
+            var memberSelectorExpression = selector.Body as MemberExpression;
+            var property = memberSelectorExpression?.Member as PropertyInfo;
+
+            property?.SetValue(_settings, value);
+
             fileService.Save(ApplicationDataFolder, LocalSettingsFile, _settings);
         }
         
@@ -37,8 +41,8 @@ namespace BackMeUp.Services
             if (!_isInitialized)
             {
                 _settings = await Task.Run(() => 
-                    fileService.Read<IDictionary<string, object>>(
-                        ApplicationDataFolder, LocalSettingsFile)) ?? new Dictionary<string, object>();
+                    fileService.Read<Settings>(
+                        ApplicationDataFolder, LocalSettingsFile)) ?? DefaultSettings.DefaultSettingsData;
                 _isInitialized = true;
             }
         }

@@ -9,7 +9,6 @@
     xmlns:prop="using:BackMeUp.Properties"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="OnLoaded">
     <Page.Resources>
         <DataTemplate x:Key="DefaultHeaderTemplate">
@@ -41,7 +40,6 @@
         </Grid>
         <NavigationView
             x:Name="NavigationViewControl"
-            Background="{ThemeResource AppBackgroundDefault}"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ExpandedModeThresholdWidth="1280"
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"

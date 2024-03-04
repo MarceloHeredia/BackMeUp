@@ -6,12 +6,49 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:BackMeUp.Controls"
     xmlns:helpers="using:BackMeUp.Helpers"
+    xmlns:xaml="using:Microsoft.UI.Xaml"
     mc:Ignorable="d">
     <Page.Resources>
-
+        <helpers:ElementThemeToBooleanConverter x:Key="ElementThemeToBooleanConverter"/>
     </Page.Resources>
-    <StackPanel x:Name="ContentArea">
-    </StackPanel>
+    <Pivot>
+        <PivotItem Header="{helpers:StringResource Key=SettingsPageHeaderPersonalization}">
+            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
+                <RadioButtons Header="{helpers:StringResource Key=SettingsPageTheme}">
+                    <RadioButton
+                        Content="{helpers:StringResource Key=SettingsPageThemeLight}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource ElementThemeToBooleanConverter}, 
+                            ConverterParameter=Light, Mode=OneWay}"
+                        GroupName="AppTheme">
+                        <RadioButton.CommandParameter>
+                            <ElementTheme>Light</ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Content="{helpers:StringResource Key=SettingsPageThemeDark}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource ElementThemeToBooleanConverter}, 
+                            ConverterParameter=Dark, Mode=OneWay}"
+                        GroupName="AppTheme">
+                        <RadioButton.CommandParameter>
+                            <ElementTheme>Dark</ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Content="{helpers:StringResource Key=SettingsPageThemeDefault}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource ElementThemeToBooleanConverter}, 
+                            ConverterParameter=Default, Mode=OneWay}"
+                        GroupName="AppTheme">
+                        <RadioButton.CommandParameter>
+                            <ElementTheme>Default</ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </RadioButtons>
+            </StackPanel>
+        </PivotItem>
+    </Pivot>
 
     <!--<Pivot>
         <PivotItem Header="{helpers:StringResource Key=SettingsPageGeneral}">

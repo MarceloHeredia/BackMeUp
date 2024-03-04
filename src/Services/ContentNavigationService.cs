@@ -3,7 +3,6 @@ using BackMeUp.Contracts.ViewModels;
 using BackMeUp.Helpers;
 using CommunityToolkit.WinUI.UI.Animations;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using System.Diagnostics.CodeAnalysis;
 
 namespace BackMeUp.Services;
@@ -16,7 +15,7 @@ namespace BackMeUp.Services;
 /// </summary>
 public class ContentNavigationService(IApplicationService applicationService, IPageService pageService) : INavigationService
 {
-    private readonly Stack<object> _navigationStack = new();
+    private readonly Stack<string> _navigationStack = new();
     private Frame? _frame;
 
     public event CustomNavigatedEventHandler? Navigated;
@@ -34,7 +33,7 @@ public class ContentNavigationService(IApplicationService applicationService, IP
     }
     [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
 
-    public bool CanGoBack => Frame is not null && _navigationStack.Count > 0;
+    public bool CanGoBack => Frame is not null && _navigationStack.Count > 1;
 
     public bool GoBack()
     {
@@ -43,14 +42,24 @@ public class ContentNavigationService(IApplicationService applicationService, IP
             return false;
         }
 
-        var currentViewModel = _navigationStack.Pop();
+        // Dropping current page
+        var currentViewModel = Frame.GetPageViewModel();
+        _navigationStack.Pop();
 
         if (currentViewModel is INavigationAware navigationAware)
         {
             navigationAware.OnNavigatedFrom();
         }
 
-        _frame.Content = pageService.GetPage(_navigationStack.Peek().GetType().FullName!);
+        // Navigating to the previous page
+        var viewModelName = _navigationStack.Peek();
+
+        _frame.Content = pageService.GetPage(viewModelName);
+        if (Frame.GetPageViewModel() is INavigationAware toNavigationAware)
+        {
+            toNavigationAware.OnNavigatedTo(null);
+        }
+        Navigated?.Invoke(Frame, new(pageService.GetPageType(viewModelName)));
 
         return true;
 
@@ -65,19 +74,20 @@ public class ContentNavigationService(IApplicationService applicationService, IP
             return false;
         }
 
-        var vmBeforeNavigation = _navigationStack.Count != 0 ? _navigationStack.Peek() : null;
+        var vmBeforeNavigation = Frame.GetPageViewModel() ?? null;
 
-        _navigationStack.Push(pageService.GetPage(pageKey));
+        var newPage = pageService.GetPage(pageKey);
+        _navigationStack.Push(pageKey);
 
         //Manually navigates by setting Frame.Content
-        Frame.Content = _navigationStack.Peek();
+        Frame.Content = newPage;
 
         if (vmBeforeNavigation is INavigationAware fromNavigationAware)
         {
             fromNavigationAware.OnNavigatedFrom();
         }
 
-        if (_navigationStack.Peek() is INavigationAware toNavigationAware)
+        if (Frame.GetPageViewModel() is INavigationAware toNavigationAware)
         {
             toNavigationAware.OnNavigatedTo(parameter);
         }

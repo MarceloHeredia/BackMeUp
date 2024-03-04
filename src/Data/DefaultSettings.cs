@@ -11,6 +11,7 @@ namespace BackMeUp.Data
 
         internal static Settings DefaultSettingsData => new()
         {
+            AppBackgroundRequestedTheme = "Default",
             StorageLocation = BackupFolder,
             GameSaveConfigs = KnownSaveGameLocations,
             LastUpdated = DateTime.Now,

@@ -1,17 +1,24 @@
 using BackMeUp.Behaviors;
 using BackMeUp.Contracts.Services;
+using BackMeUp.Helpers;
+using BackMeUp.Services;
 using BackMeUp.ViewModels;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Windows.System;
+using Windows.UI.ViewManagement;
 
 
 namespace BackMeUp.Pages;
 
 public sealed partial class ShellPage
 {
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
+    private readonly UISettings _settings;
+
     public ShellViewModel ViewModel { get; }
     public IApplicationService ApplicationService { get; }
 
@@ -39,10 +46,27 @@ public sealed partial class ShellPage
         ApplicationService.MainWindow.ExtendsContentIntoTitleBar = true;
         ApplicationService.MainWindow.SetTitleBar(AppTitleBar);
         ApplicationService.MainWindow.Activated += MainWindow_Activated;
+
+
+        // Theme change code picked from https://github.com/microsoft/WinUI-Gallery/pull/1239
+        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        _settings = new();
+        _settings.ColorValuesChanged += Settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event
+    }
+
+    // this handles updating the caption button colors correctly when Windows system theme is changed
+    // while the app is open
+    private void Settings_ColorValuesChanged(UISettings sender, object args) //TODO:
+    {
+        // This calls comes off-thread, hence we will need to dispatch it to current app's thread
+        _dispatcherQueue.TryEnqueue(() =>
+        {
+            TitleBarHelper.ApplySystemThemeToCaptionButtons(ApplicationService.AppTitleBar as FrameworkElement, (ApplicationService.MainWindow as MainWindow)!);
+        });
     }
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        //TitleBarHelper.UpdateTitleBar(RequestedTheme);
+        TitleBarHelper.UpdateTitleBar(RequestedTheme, (ApplicationService.MainWindow as MainWindow)!);
 
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));

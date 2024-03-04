@@ -6,7 +6,7 @@ namespace BackMeUp.Models
 {
     public class Settings
     {
-
+        public required string AppBackgroundRequestedTheme { get; set; }
         public required string StorageLocation { get; set; }
         public required IList<GameSaveConfig> GameSaveConfigs { get; set; }
         [JsonProperty(nameof(Version))]

@@ -1,4 +1,6 @@
 ﻿using BackMeUp.Contracts.Services;
+using BackMeUp.Helpers;
+using BackMeUp.Models;
 using BackMeUp.Properties;
 using Microsoft.UI.Xaml;
 
@@ -31,7 +33,7 @@ public class ThemeSelectorService(IApplicationService applicationService, ILocal
         {
             rootElement.RequestedTheme = Theme;
 
-            //TitleBarHelper.UpdateTitleBar(Theme);
+            TitleBarHelper.UpdateTitleBar(Theme, (applicationService.MainWindow as MainWindow)!);
         }
 
         await Task.CompletedTask;
@@ -39,13 +41,15 @@ public class ThemeSelectorService(IApplicationService applicationService, ILocal
 
     private async Task<ElementTheme> LoadThemeFromSettingsAsync()
     {
-        var themeName = await localSettingsService.ReadSettingAsync<string>(SettingsKey);
+        var themeName = await localSettingsService.ReadSettingAsync<string>(s => s.AppBackgroundRequestedTheme);
+
+        var someTesat = await localSettingsService.ReadSettingAsync<IList<GameSaveConfig>>(s  => s.GameSaveConfigs);
 
         return Enum.TryParse(themeName, out ElementTheme cacheTheme) ? cacheTheme : ElementTheme.Default;
     }
 
     private async Task SaveThemeInSettingsAsync(ElementTheme theme)
     {
-        await localSettingsService.SaveSettingAsync(SettingsKey, theme.ToString());
+        await localSettingsService.SaveSettingAsync(s => s.AppBackgroundRequestedTheme, theme.ToString());
     }
 }
